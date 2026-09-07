@@ -1,0 +1,176 @@
+class OrderIntakeManager {
+  constructor() {
+    this.orders = [];              // Array to store all orders
+    this.orderCounter = 1000;      // Auto-increment order ID
+
+    // Configurable thresholds
+    this.allowedTypes = [
+      'application/pdf',
+      'image/jpeg',
+      'image/png',
+      'application/msword',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    ];
+    this.largeFileThresholdMB = 50;
+    this.largePageThreshold = 100;
+  }
+
+  /**
+   * Main entry point: submit a new order
+   */
+  submitOrder(customerInfo, files, specs) {
+    // Step 2: Validate every file
+    const processedFiles = files.map(file => this.validateFile(file));
+
+    // Step 3: Check if order needs manager approval
+    const requiresApproval = this.checkRequiresApproval(processedFiles, specs);
+
+    // Step 4: Build the Order object
+    const order = {
+      orderId: `ORD-${++this.orderCounter}`,
+      customerId: customerInfo.customerId || `CUST-${Date.now()}`,
+      customerName: customerInfo.name,
+      contact: customerInfo.contact || '',
+      channel: customerInfo.channel, // 'messenger' | 'email' | 'in-person' | 'bluetooth'
+      files: processedFiles,
+      specs: {
+        paperSize: specs.paperSize || 'A4',
+        copies: specs.copies || 1,
+        colorTier: specs.colorTier || 'black-only',
+        // black-only, minimal-color, small-image, full-color
+        notes: specs.notes || ''
+      },
+      status: requiresApproval ? 'PENDING_APPROVAL' : 'RECEIVED',
+      createdAt: new Date(),
+      requiresApproval: requiresApproval
+    };
+
+    // Step 5: Store and return
+    this.orders.push(order);
+    return order;
+  }
+
+  /**
+   * File validation algorithm
+   */
+  validateFile(file) {
+    const errors = [];
+
+    if (!file || file.size === 0) {
+      errors.push('File is empty or missing');
+    }
+    if (file.type && !this.allowedTypes.includes(file.type)) {
+      errors.push(`File type "${file.type}" not allowed`);
+    }
+
+    return {
+      fileId: `FILE-${Date.now()}-${Math.floor(Math.random() * 10000)}`,
+      fileName: file.name || 'unnamed',
+      fileSize: file.size || 0,
+      mimeType: file.type || 'unknown',
+      pageCount: file.pageCount || null,
+      isValid: errors.length === 0,
+      validationErrors: errors
+    };
+  }
+
+  /**
+   * Approval check algorithm
+   */
+  checkRequiresApproval(files, specs) {
+    const totalSizeMB = files.reduce((sum, f) => sum + (f.fileSize / 1024 / 1024), 0);
+    const totalPages = files.reduce((sum, f) => sum + (f.pageCount || 0), 0);
+    const totalCopies = specs.copies || 1;
+
+    // Large file OR high page count multiplied by copies
+    return totalSizeMB > this.largeFileThresholdMB || 
+           (totalPages * totalCopies) > this.largePageThreshold;
+  }
+
+  getOrder(orderId) {
+    return this.orders.find(o => o.orderId === orderId);
+  }
+
+  approveOrder(orderId) {
+    const order = this.getOrder(orderId);
+    if (order && order.status === 'PENDING_APPROVAL') {
+      order.status = 'APPROVED';
+      order.approvedAt = new Date();
+      return { success: true, order };
+    }
+    return { success: false, message: 'Order not found or not pending approval' };
+  }
+
+  getOrdersByChannel(channel) {
+    return this.orders.filter(o => o.channel === channel);
+  }
+}
+
+
+// ==================== TEST CASES ====================
+console.log("=== MODULE 3: ORDER INTAKE & FILE SUBMISSION ===\n");
+
+const intake = new OrderIntakeManager();
+
+// Test 1: Normal walk-in order
+const normalOrder = intake.submitOrder(
+  { name: "Juan Dela Cruz", contact: "09171234567", channel: "in-person" },
+  [
+    { name: "thesis_ch1.pdf", size: 2048000, type: "application/pdf", pageCount: 25 },
+    { name: "thesis_ch2.pdf", size: 1536000, type: "application/pdf", pageCount: 20 }
+  ],
+  { paperSize: "A4", copies: 2, colorTier: "black-only", notes: "Bind after print" }
+);
+
+console.log("Test 1 - Normal Order:");
+console.log(`  Order ID: ${normalOrder.orderId}`);
+console.log(`  Status: ${normalOrder.status}`);
+console.log(`  Files: ${normalOrder.files.length}`);
+console.log(`  All valid: ${normalOrder.files.every(f => f.isValid)}`);
+console.log("");
+
+// Test 2: Large order (needs approval)
+const largeOrder = intake.submitOrder(
+  { name: "Maria Santos", contact: "marias@email.com", channel: "email" },
+  [
+    { name: "yearbook.pdf", size: 62914560, type: "application/pdf", pageCount: 150 },
+    { name: "appendix.pdf", size: 10485760, type: "application/pdf", pageCount: 40 }
+  ],
+  { paperSize: "A4", copies: 1, colorTier: "full-color", notes: "Rush order" }
+);
+
+console.log("Test 2 - Large Order (Auto-Flagged):");
+console.log(`  Order ID: ${largeOrder.orderId}`);
+console.log(`  Status: ${largeOrder.status}`);
+console.log(`  Requires Approval: ${largeOrder.requiresApproval}`);
+console.log("");
+
+// Test 3: Corrupted/invalid file
+const badFileOrder = intake.submitOrder(
+  { name: "Pedro Penduko", channel: "messenger" },
+  [
+    { name: "virus.exe", size: 0, type: "application/x-msdownload" },
+    { name: "valid.pdf", size: 1024000, type: "application/pdf", pageCount: 10 }
+  ],
+  { paperSize: "Short", copies: 1, colorTier: "black-only" }
+);
+
+console.log("Test 3 - Invalid File Detection:");
+console.log(`  Order ID: ${badFileOrder.orderId}`);
+badFileOrder.files.forEach(f => {
+  console.log(`  - ${f.fileName}: Valid=${f.isValid}, Errors=${f.validationErrors.join(", ") || "None"}`);
+});
+console.log("");
+
+// Test 4: Approve the large order
+const approval = intake.approveOrder(largeOrder.orderId);
+console.log("Test 4 - Approval Flow:");
+console.log(`  Approval success: ${approval.success}`);
+console.log(`  New status: ${approval.order?.status || 'N/A'}`);
+console.log("");
+
+// Test 5: Retrieve by channel
+const messengerOrders = intake.getOrdersByChannel("messenger");
+console.log("Test 5 - Filter by Channel:");
+console.log(`  Messenger orders: ${messengerOrders.length}`);
+console.log("\n=== ALL TESTS COMPLETED ===");
