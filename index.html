@@ -1152,213 +1152,252 @@
     }
 
 
-    function getTotalPaidForOrder(orderID) {
+function getTotalPaidForOrder(orderID) {
 
-        return payments
+    return payments
 
-            .filter(payment => payment.orderID === orderID)
+        .filter(payment => payment.orderID === orderID)
 
-            .reduce(
-                (total, payment) =>
-                    total + Number(payment.amount),
-                0
-            );
+        .reduce(
+            (total, payment) =>
+                total + Number(payment.amountApplied),
+            0
+        );
+}
+
+
+ function recordPayment() {
+
+    const orderID =
+        document.getElementById("paymentOrder").value;
+
+    const amountGiven =
+        Number(document.getElementById("paymentAmount").value);
+
+    const method =
+        document.getElementById("paymentMethod").value;
+
+    const type =
+        document.getElementById("paymentType").value;
+
+
+    const order =
+        orders.find(order => order.id === orderID);
+
+
+    if (!order) {
+        alert("Please select an order.");
+        return;
     }
 
 
-    function recordPayment() {
-
-        const orderID =
-            document.getElementById("paymentOrder").value;
-
-        const amount =
-            Number(document.getElementById("paymentAmount").value);
-
-        const method =
-            document.getElementById("paymentMethod").value;
-
-        const type =
-            document.getElementById("paymentType").value;
-
-
-        const order =
-            orders.find(order => order.id === orderID);
-
-
-        if (!order) {
-
-            alert("Please select an order.");
-
-            return;
-        }
-
-
-        if (amount <= 0) {
-
-            alert("Payment amount must be greater than 0.");
-
-            return;
-        }
-
-
-        const alreadyPaid =
-            getTotalPaidForOrder(orderID);
-
-
-        const remainingBalance =
-            order.totalAmount - alreadyPaid;
-
-
-        if (amount > remainingBalance) {
-
-            alert(
-                "Payment is greater than the remaining balance of " +
-                formatMoney(remainingBalance)
-            );
-
-            return;
-        }
-
-
-        const payment = {
-
-            id:
-                "PAY-" +
-                String(Date.now()).slice(-6),
-
-            orderID,
-
-            customerName:
-                order.customerName,
-
-            amount,
-
-            method,
-
-            type,
-
-            date:
-                new Date().toLocaleString()
-
-        };
-
-
-        payments.push(payment);
-
-        saveData();
-
-        document.getElementById("paymentAmount").value = "";
-
-        document.getElementById("paymentMessage").innerHTML = `
-
-            <div class="success">
-
-                Payment recorded successfully.
-
-                <br>
-
-                Amount:
-                <strong>
-                    ${formatMoney(amount)}
-                </strong>
-
-            </div>
-
-        `;
-
-
-        renderPayments();
-        updatePaymentSummary();
-
-        alert("Payment successfully recorded.");
-
+    if (amountGiven <= 0) {
+        alert("Payment amount must be greater than 0.");
+        return;
     }
 
 
-    function renderPayments() {
-
-        const container =
-            document.getElementById("paymentsContainer");
+    const alreadyPaid =
+        getTotalPaidForOrder(orderID);
 
 
-        if (payments.length === 0) {
-
-            container.innerHTML =
-                `<div class="empty">
-                    No transactions recorded yet.
-                </div>`;
-
-            return;
-        }
+    const remainingBalance =
+        order.totalAmount - alreadyPaid;
 
 
-        container.innerHTML = `
+    // Calculate the change if the customer gives more than needed.
+    const change =
+        amountGiven > remainingBalance
+            ? amountGiven - remainingBalance
+            : 0;
 
-            <table>
 
-                <thead>
+    // Only the amount needed for the order counts as payment.
+    const amountApplied =
+        Math.min(amountGiven, remainingBalance);
+
+
+    const payment = {
+
+        id:
+            "PAY-" +
+            String(Date.now()).slice(-6),
+
+        orderID,
+
+        customerName:
+            order.customerName,
+
+        // How much cash/payment the customer actually handed over
+        amountGiven,
+
+        // How much of that payment was actually used for the order
+        amountApplied,
+
+        // Money returned to the customer
+        change,
+
+        method,
+
+        type,
+
+        date:
+            new Date().toLocaleString()
+
+    };
+
+
+    payments.push(payment);
+
+    saveData();
+
+    document.getElementById("paymentAmount").value = "";
+
+
+    document.getElementById("paymentMessage").innerHTML = `
+
+        <div class="success">
+
+            Payment recorded successfully.
+
+            <br><br>
+
+            Amount Given:
+            <strong>
+                ${formatMoney(amountGiven)}
+            </strong>
+
+            <br>
+
+            Amount Applied:
+            <strong>
+                ${formatMoney(amountApplied)}
+            </strong>
+
+            <br>
+
+            Change:
+            <strong>
+                ${formatMoney(change)}
+            </strong>
+
+        </div>
+
+    `;
+
+
+    renderPayments();
+    updatePaymentSummary();
+
+    alert(
+        "Payment recorded!\n\n" +
+        "Amount Given: " + formatMoney(amountGiven) + "\n" +
+        "Order Total Applied: " + formatMoney(amountApplied) + "\n" +
+        "Change: " + formatMoney(change)
+    );
+}
+
+
+function renderPayments() {
+
+    const container =
+        document.getElementById("paymentsContainer");
+
+
+    if (payments.length === 0) {
+
+        container.innerHTML =
+            `<div class="empty">
+                No transactions recorded yet.
+            </div>`;
+
+        return;
+    }
+
+
+    container.innerHTML = `
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Payment ID</th>
+                    <th>Order</th>
+                    <th>Customer</th>
+                    <th>Amount Given</th>
+                    <th>Applied</th>
+                    <th>Change</th>
+                    <th>Method</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                ${payments.map(payment => `
 
                     <tr>
-                        <th>Payment ID</th>
-                        <th>Order</th>
-                        <th>Customer</th>
-                        <th>Amount</th>
-                        <th>Method</th>
-                        <th>Type</th>
-                        <th>Date</th>
+
+                        <td>
+                            ${payment.id}
+                        </td>
+
+                        <td>
+                            ${payment.orderID}
+                        </td>
+
+                        <td>
+                            ${payment.customerName}
+                        </td>
+
+                        <td>
+                            <strong>
+                                ${formatMoney(payment.amountGiven)}
+                            </strong>
+                        </td>
+
+                        <td>
+                            ${formatMoney(payment.amountApplied)}
+                        </td>
+
+                        <td>
+                            ${
+                                payment.change > 0
+                                ? `<span class="badge yellow">
+                                    ${formatMoney(payment.change)}
+                                  </span>`
+                                : formatMoney(0)
+                            }
+                        </td>
+
+                        <td>
+                            ${payment.method}
+                        </td>
+
+                        <td>
+                            <span class="badge blue">
+                                ${payment.type}
+                            </span>
+                        </td>
+
+                        <td>
+                            ${payment.date}
+                        </td>
+
                     </tr>
 
-                </thead>
+                `).join("")}
 
-                <tbody>
+            </tbody>
 
-                    ${payments.map(payment => `
+        </table>
 
-                        <tr>
+    `;
 
-                            <td>
-                                ${payment.id}
-                            </td>
-
-                            <td>
-                                ${payment.orderID}
-                            </td>
-
-                            <td>
-                                ${payment.customerName}
-                            </td>
-
-                            <td>
-                                <strong>
-                                    ${formatMoney(payment.amount)}
-                                </strong>
-                            </td>
-
-                            <td>
-                                ${payment.method}
-                            </td>
-
-                            <td>
-                                <span class="badge blue">
-                                    ${payment.type}
-                                </span>
-                            </td>
-
-                            <td>
-                                ${payment.date}
-                            </td>
-
-                        </tr>
-
-                    `).join("")}
-
-                </tbody>
-
-            </table>
-
-        `;
-
-    }
+}
 
 
     function updatePaymentSummary() {
