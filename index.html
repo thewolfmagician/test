@@ -2,1160 +2,1333 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Grea San Jave Printing Services</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-/* =========================================================
-   GREASAN JAVE PRINTING SERVICES
-   PRESSLINE-INSPIRED DESIGN
-   ========================================================= */
+    <title>
+        Grea San Jave Printing Services
+    </title>
 
-:root {
-    /* Paper + ink */
-    --paper: #F6F3EC;
-    --paper-dim: #EDE9DE;
 
-    --ink: #1B1B1E;
-    --ink-soft: #3A3A3F;
-    --ink-faint: #77767A;
+    <style>
 
-    --line: #DAD5C7;
-    --line-strong: #C7C1AF;
+        /* =====================================================
+           DESIGN TOKENS
+        ===================================================== */
 
-    /* CMYK-inspired accents */
-    --cyan: #0089C6;
-    --cyan-ink: #04405A;
+        :root {
 
-    --magenta: #D2006E;
-    --magenta-ink: #5E0032;
+            --paper: #F6F3EC;
+            --paper-dim: #EDE9DE;
 
-    --yellow: #E8AC00;
-    --yellow-ink: #4A3600;
+            --ink: #1B1B1E;
+            --ink-soft: #3A3A3F;
+            --ink-faint: #77767A;
 
-    --key: #17181C;
+            --line: #DAD5C7;
+            --line-strong: #C7C1AF;
 
-    /* Status colors */
-    --ok: #1F8A5F;
-    --ok-bg: #DFF1E7;
+            --cyan: #0089C6;
+            --cyan-ink: #04405A;
 
-    --warn: #B4790C;
-    --warn-bg: #FBEBCB;
+            --magenta: #D2006E;
+            --magenta-ink: #5E0032;
 
-    --danger: #C21E4B;
-    --danger-bg: #FBE1E8;
+            --yellow: #E8AC00;
+            --yellow-ink: #4A3600;
 
-    --info: #0089C6;
-    --info-bg: #DEF0F9;
+            --key: #17181C;
 
-    --radius-sm: 4px;
-    --radius-md: 7px;
+            --ok: #1F8A5F;
+            --ok-bg: #DFF1E7;
 
-    --shadow: 0 2px 10px rgba(27, 27, 30, 0.07);
-}
+            --warn: #B4790C;
+            --warn-bg: #FBEBCB;
 
+            --danger: #C21E4B;
+            --danger-bg: #FBE1E8;
 
-/* =========================================================
-   BASIC RESET
-   ========================================================= */
+            --info: #0089C6;
+            --info-bg: #DEF0F9;
 
-* {
-    box-sizing: border-box;
-}
+            --radius-sm: 4px;
+            --radius-md: 7px;
 
-html,
-body {
-    min-height: 100%;
-}
+            --shadow:
+                0 2px 10px
+                rgba(27, 27, 30, 0.07);
 
-body {
-    margin: 0;
+        }
 
-    font-family:
-        Inter,
-        Arial,
-        Helvetica,
-        sans-serif;
 
-    background: var(--paper);
+        /* =====================================================
+           RESET
+        ===================================================== */
 
-    color: var(--ink);
+        * {
+            box-sizing: border-box;
+        }
 
-    -webkit-font-smoothing: antialiased;
-}
 
+        html,
+        body {
+            min-height: 100%;
+        }
 
-/* Headings */
 
-h1,
-h2,
-h3,
-h4 {
-    font-family:
-        "Space Grotesk",
-        Arial,
-        Helvetica,
-        sans-serif;
+        body {
 
-    color: var(--key);
+            margin: 0;
 
-    margin: 0;
-}
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-p {
-    color: var(--ink-soft);
+            background: var(--paper);
 
-    line-height: 1.55;
-}
+            color: var(--ink);
 
-button,
-input,
-select,
-textarea {
-    font-family: inherit;
-}
+            -webkit-font-smoothing: antialiased;
 
+        }
 
-/* =========================================================
-   HEADER
-   ========================================================= */
 
-header {
-    position: relative;
+        h1,
+        h2,
+        h3,
+        h4 {
 
-    background: var(--key);
+            margin: 0;
 
-    color: white;
+            color: var(--key);
 
-    padding: 24px 20px 22px;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-    text-align: center;
+        }
 
-    border-bottom: 4px solid var(--cyan);
 
-    overflow: hidden;
-}
+        p {
 
+            color: var(--ink-soft);
 
-/*
-    Small CMYK-style registration marks.
-*/
+            line-height: 1.55;
 
-header::before,
-header::after {
-    content: "";
+        }
 
-    position: absolute;
 
-    width: 12px;
-    height: 12px;
-}
+        button,
+        input,
+        select,
+        textarea {
 
+            font-family: inherit;
 
-header::before {
-    top: 10px;
-    left: 14px;
+        }
 
-    border-top: 2px solid var(--cyan);
-    border-left: 2px solid var(--cyan);
-}
 
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
-header::after {
-    bottom: 10px;
-    right: 14px;
+        header {
 
-    border-bottom: 2px solid var(--magenta);
-    border-right: 2px solid var(--magenta);
-}
+            position: relative;
 
+            background: var(--key);
 
-header h1 {
-    color: #fff;
+            color: white;
 
-    font-size: 28px;
+            padding: 25px 20px 22px;
 
-    letter-spacing: -0.02em;
+            text-align: center;
 
-    margin-bottom: 5px;
-}
+            border-bottom: 4px solid var(--cyan);
 
+            overflow: hidden;
 
-header p {
-    color: #BDBCC2;
+        }
 
-    margin: 0;
 
-    font-size: 13px;
-}
+        header::before {
 
+            content: "";
 
-/* =========================================================
-   NAVIGATION
-   ========================================================= */
+            position: absolute;
 
-nav {
-    display: flex;
+            top: 10px;
+            left: 14px;
 
-    justify-content: center;
+            width: 12px;
+            height: 12px;
 
-    flex-wrap: wrap;
+            border-top:
+                2px solid var(--cyan);
 
-    background: #fff;
+            border-left:
+                2px solid var(--cyan);
 
-    border-bottom: 1px solid var(--line);
+        }
 
-    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-}
 
+        header::after {
 
-nav button {
-    position: relative;
+            content: "";
 
-    padding: 14px 22px;
+            position: absolute;
 
-    border: none;
+            right: 14px;
+            bottom: 10px;
 
-    border-bottom: 3px solid transparent;
+            width: 12px;
+            height: 12px;
 
-    background: transparent;
+            border-right:
+                2px solid var(--magenta);
 
-    color: var(--ink-soft);
+            border-bottom:
+                2px solid var(--magenta);
 
-    cursor: pointer;
+        }
 
-    font-weight: 600;
 
-    font-size: 13px;
+        header h1 {
 
-    transition:
-        background 0.15s ease,
-        color 0.15s ease,
-        border-color 0.15s ease;
-}
+            color: white;
 
+            font-size: 28px;
 
-nav button:hover {
-    background: var(--paper-dim);
+            margin-bottom: 5px;
 
-    color: var(--ink);
-}
+            letter-spacing: -0.02em;
 
+        }
 
-nav button.active {
-    color: var(--key);
 
-    border-bottom-color: var(--cyan);
+        header p {
 
-    background: #fff;
-}
+            margin: 0;
 
+            color: #BDBCC2;
 
-/* =========================================================
-   MAIN CONTENT
-   ========================================================= */
+            font-size: 13px;
 
-main {
-    width: 100%;
+        }
 
-    max-width: 1400px;
 
-    margin: 0 auto;
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
 
-    padding: 28px 26px 60px;
-}
+        nav {
 
+            display: flex;
 
-/* Modules */
+            justify-content: center;
 
-.module {
-    display: none;
+            flex-wrap: wrap;
 
-    animation: fadeIn 0.18s ease;
-}
+            background: white;
 
+            border-bottom:
+                1px solid var(--line);
 
-.module.active {
-    display: block;
-}
+        }
 
 
-@keyframes fadeIn {
+        nav button {
 
-    from {
-        opacity: 0;
-        transform: translateY(3px);
-    }
+            position: relative;
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+            padding: 14px 22px;
 
-}
+            border: none;
 
+            border-bottom:
+                3px solid transparent;
 
-/* =========================================================
-   CARDS / PANELS
-   ========================================================= */
+            background: transparent;
 
-.card {
-    background: #fff;
+            color: var(--ink-soft);
 
-    border: 1px solid var(--line);
+            cursor: pointer;
 
-    border-radius: var(--radius-md);
+            font-size: 13px;
 
-    padding: 20px;
+            font-weight: 600;
 
-    margin-bottom: 20px;
+            transition: 0.15s ease;
 
-    box-shadow: var(--shadow);
-}
+        }
 
 
-.card h2 {
-    font-size: 18px;
+        nav button:hover {
 
-    letter-spacing: -0.01em;
+            background: var(--paper-dim);
 
-    margin-bottom: 8px;
+            color: var(--ink);
 
-    color: var(--key);
-}
+        }
 
 
-.card h3 {
-    font-size: 14px;
+        nav button.active {
 
-    margin: 20px 0 10px;
+            color: var(--key);
 
-    color: var(--ink);
-}
+            border-bottom-color:
+                var(--cyan);
 
+            background: white;
 
-/*
-    Accent line at the top of each panel.
-*/
+        }
 
-.card {
-    position: relative;
 
-    overflow: hidden;
-}
+        /* =====================================================
+           MAIN
+        ===================================================== */
 
+        main {
 
-.card::before {
-    content: "";
+            width: 100%;
 
-    position: absolute;
+            max-width: 1400px;
 
-    top: 0;
-    left: 0;
+            margin: auto;
 
-    width: 48px;
-    height: 3px;
+            padding:
+                28px 26px 60px;
 
-    background: var(--cyan);
-}
+        }
 
 
-/* =========================================================
-   FORM GRID
-   ========================================================= */
+        .module {
 
-.form-grid {
-    display: grid;
+            display: none;
 
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(220px, 1fr)
-        );
+        }
 
-    gap: 17px;
-}
 
+        .module.active {
 
-/* =========================================================
-   LABELS
-   ========================================================= */
+            display: block;
 
-label {
-    display: block;
+            animation:
+                fadeIn 0.18s ease;
 
-    margin-bottom: 6px;
+        }
 
-    color: var(--ink-soft);
 
-    font-size: 12px;
+        @keyframes fadeIn {
 
-    font-weight: 600;
-}
+            from {
 
+                opacity: 0;
 
-/* =========================================================
-   INPUTS / SELECTS
-   ========================================================= */
+                transform:
+                    translateY(3px);
 
-input,
-select,
-textarea {
-    width: 100%;
+            }
 
-    padding: 10px 11px;
+            to {
 
-    border: 1px solid var(--line-strong);
+                opacity: 1;
 
-    border-radius: var(--radius-sm);
+                transform:
+                    translateY(0);
 
-    background: #fff;
+            }
 
-    color: var(--ink);
+        }
 
-    font-size: 13px;
 
-    outline: none;
+        /* =====================================================
+           CARDS
+        ===================================================== */
 
-    transition:
-        border-color 0.15s ease,
-        box-shadow 0.15s ease;
-}
+        .card {
 
+            position: relative;
 
-input:hover,
-select:hover,
-textarea:hover {
-    border-color: #AEA796;
-}
+            background: white;
 
+            border:
+                1px solid var(--line);
 
-input:focus,
-select:focus,
-textarea:focus {
-    border-color: var(--cyan);
+            border-radius:
+                var(--radius-md);
 
-    box-shadow:
-        0 0 0 3px
-        rgba(0, 137, 198, 0.10);
-}
+            padding: 20px;
 
+            margin-bottom: 20px;
 
-input[readonly] {
-    background: var(--paper-dim);
+            box-shadow:
+                var(--shadow);
 
-    color: var(--ink-soft);
+            overflow: hidden;
 
-    cursor: not-allowed;
-}
+        }
 
 
-input[type="file"] {
-    padding: 9px;
+        .card::before {
 
-    background: var(--paper);
+            content: "";
 
-    cursor: pointer;
-}
+            position: absolute;
 
+            top: 0;
+            left: 0;
 
-input[type="file"]::file-selector-button {
-    border: 1px solid var(--line-strong);
+            width: 48px;
+            height: 3px;
 
-    background: #fff;
+            background: var(--cyan);
 
-    color: var(--ink);
+        }
 
-    padding: 7px 11px;
 
-    margin-right: 10px;
+        .card h2 {
 
-    border-radius: var(--radius-sm);
+            font-size: 19px;
 
-    cursor: pointer;
+            margin-bottom: 7px;
 
-    font-size: 12px;
+            letter-spacing:
+                -0.01em;
 
-    font-weight: 600;
-}
+        }
 
 
-/* =========================================================
-   BUTTONS
-   ========================================================= */
+        .card h3 {
 
-button {
-    transition:
-        background 0.15s ease,
-        transform 0.1s ease,
-        box-shadow 0.15s ease;
-}
+            font-size: 14px;
 
+            margin:
+                20px 0 10px;
 
-button:active {
-    transform: translateY(1px);
-}
+        }
 
 
-button.primary {
-    display: inline-flex;
+        /* =====================================================
+           FORM
+        ===================================================== */
 
-    align-items: center;
+        .form-grid {
 
-    justify-content: center;
+            display: grid;
 
-    background: var(--key);
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(220px, 1fr)
+                );
 
-    color: #fff;
+            gap: 17px;
 
-    border: 1px solid var(--key);
+        }
 
-    padding: 10px 17px;
 
-    border-radius: var(--radius-sm);
+        label {
 
-    cursor: pointer;
+            display: block;
 
-    font-size: 13px;
+            margin-bottom: 6px;
 
-    font-weight: 600;
+            color: var(--ink-soft);
 
-    margin-top: 15px;
-}
+            font-size: 12px;
 
+            font-weight: 600;
 
-button.primary:hover {
-    background: #000;
+        }
 
-    box-shadow:
-        0 3px 8px
-        rgba(0,0,0,0.12);
-}
 
+        input,
+        select,
+        textarea {
 
-button.danger {
-    background: var(--danger);
+            width: 100%;
 
-    color: #fff;
+            padding:
+                10px 11px;
 
-    border: none;
+            border:
+                1px solid var(--line-strong);
 
-    padding: 7px 11px;
+            border-radius:
+                var(--radius-sm);
 
-    border-radius: var(--radius-sm);
+            background: white;
 
-    cursor: pointer;
+            color: var(--ink);
 
-    font-size: 12px;
+            font-size: 13px;
 
-    font-weight: 600;
-}
+            outline: none;
 
+            transition: 0.15s ease;
 
-button.danger:hover {
-    background: #9E1739;
-}
+        }
 
 
-button.small {
-    padding: 6px 9px;
+        input:hover,
+        select:hover,
+        textarea:hover {
 
-    background: #fff;
+            border-color:
+                #AEA796;
 
-    border: 1px solid var(--line-strong);
+        }
 
-    color: var(--ink-soft);
 
-    border-radius: var(--radius-sm);
+        input:focus,
+        select:focus,
+        textarea:focus {
 
-    cursor: pointer;
+            border-color:
+                var(--cyan);
 
-    font-size: 11px;
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    0,
+                    137,
+                    198,
+                    0.10
+                );
 
-    font-weight: 600;
-}
+        }
 
 
-button.small:hover {
-    background: var(--paper-dim);
+        input[readonly] {
 
-    border-color: var(--cyan);
+            background:
+                var(--paper-dim);
 
-    color: var(--cyan-ink);
-}
+            color:
+                var(--ink-soft);
 
+        }
 
-/* =========================================================
-   SUMMARY CARDS
-   ========================================================= */
 
-.summary-grid {
-    display: grid;
+        input[type="file"] {
 
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(200px, 1fr)
-        );
+            padding: 9px;
 
-    gap: 14px;
-}
+            background:
+                var(--paper);
 
+            cursor: pointer;
 
-.summary-box {
-    position: relative;
+        }
 
-    background: var(--key);
 
-    color: white;
+        input[type="file"]::file-selector-button {
 
-    border-radius: var(--radius-md);
+            border:
+                1px solid var(--line-strong);
 
-    padding: 18px;
+            background: white;
 
-    overflow: hidden;
+            color: var(--ink);
 
-    border-top: 3px solid var(--cyan);
-}
+            padding:
+                7px 11px;
 
+            margin-right: 10px;
 
-.summary-box:nth-child(2) {
-    border-top-color: var(--magenta);
-}
+            border-radius:
+                var(--radius-sm);
 
+            cursor: pointer;
 
-.summary-box:nth-child(3) {
-    border-top-color: var(--yellow);
-}
+            font-size: 12px;
 
+            font-weight: 600;
 
-.summary-box h3 {
-    color: #BDBCC2;
+        }
 
-    font-size: 11px;
 
-    font-weight: 600;
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
 
-    margin: 0 0 7px;
-}
+        button {
 
+            transition: 0.15s ease;
 
-.summary-box p {
-    color: #fff;
+        }
 
-    font-family:
-        "Space Grotesk",
-        Arial,
-        sans-serif;
 
-    font-size: 25px;
+        button:active {
 
-    font-weight: 600;
+            transform:
+                translateY(1px);
 
-    margin: 0;
-}
+        }
 
 
-/* =========================================================
-   TABLES
-   ========================================================= */
+        button.primary {
 
-table {
-    width: 100%;
+            display: inline-flex;
 
-    border-collapse: collapse;
+            align-items: center;
 
-    margin-top: 18px;
+            justify-content: center;
 
-    font-size: 13px;
+            background:
+                var(--key);
 
-    background: #fff;
-}
+            color: white;
 
+            border:
+                1px solid var(--key);
 
-th {
-    padding: 9px 10px;
+            padding:
+                10px 17px;
 
-    background: var(--paper-dim);
+            border-radius:
+                var(--radius-sm);
 
-    color: var(--ink-faint);
+            cursor: pointer;
 
-    border-bottom: 1px solid var(--line-strong);
+            font-size: 13px;
 
-    text-align: left;
+            font-weight: 600;
 
-    font-size: 11px;
+            margin-top: 15px;
 
-    font-weight: 600;
+        }
 
-    white-space: nowrap;
-}
 
+        button.primary:hover {
 
-td {
-    padding: 11px 10px;
+            background: #000;
 
-    color: var(--ink-soft);
+            box-shadow:
+                0 3px 8px
+                rgba(0,0,0,0.12);
 
-    border-bottom: 1px solid var(--line);
+        }
 
-    vertical-align: middle;
-}
 
+        button.danger {
 
-tbody tr {
-    transition: background 0.12s ease;
-}
+            background:
+                var(--danger);
 
+            color: white;
 
-tbody tr:hover {
-    background: #FAF8F2;
-}
+            border: none;
 
+            padding:
+                7px 11px;
 
-tbody tr:last-child td {
-    border-bottom: none;
-}
+            border-radius:
+                var(--radius-sm);
 
+            cursor: pointer;
 
-/* Order IDs and payment IDs */
+            font-size: 12px;
 
-td strong {
-    color: var(--key);
-}
+            font-weight: 600;
 
+        }
 
-/* =========================================================
-   BADGES
-   ========================================================= */
 
-.badge {
-    display: inline-flex;
+        button.danger:hover {
 
-    align-items: center;
+            background:
+                #9E1739;
 
-    gap: 5px;
+        }
 
-    padding: 4px 9px;
 
-    border-radius: 20px;
+        button.small {
 
-    font-size: 10.5px;
+            padding:
+                6px 9px;
 
-    font-weight: 600;
+            background: white;
 
-    white-space: nowrap;
-}
+            border:
+                1px solid var(--line-strong);
 
+            color:
+                var(--ink-soft);
 
-.badge::before {
-    content: "";
+            border-radius:
+                var(--radius-sm);
 
-    width: 6px;
-    height: 6px;
+            cursor: pointer;
 
-    border-radius: 50%;
-}
+            font-size: 11px;
 
+            font-weight: 600;
 
-/* Existing badge classes */
+        }
 
-.badge.green {
-    background: var(--ok-bg);
 
-    color: var(--ok);
-}
+        button.small:hover {
 
+            background:
+                var(--paper-dim);
 
-.badge.green::before {
-    background: var(--ok);
-}
+            border-color:
+                var(--cyan);
 
+            color:
+                var(--cyan-ink);
 
-.badge.yellow {
-    background: var(--warn-bg);
+        }
 
-    color: var(--warn);
-}
 
+        /* =====================================================
+           SUMMARY
+        ===================================================== */
 
-.badge.yellow::before {
-    background: var(--warn);
-}
+        .summary-grid {
 
+            display: grid;
 
-.badge.red {
-    background: var(--danger-bg);
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(200px, 1fr)
+                );
 
-    color: var(--danger);
-}
+            gap: 14px;
 
+        }
 
-.badge.red::before {
-    background: var(--danger);
-}
 
+        .summary-box {
 
-.badge.red::before {
-    background: var(--danger);
-}
+            position: relative;
 
+            background:
+                var(--key);
 
-.badge.blue {
-    background: var(--info-bg);
+            color: white;
 
-    color: var(--cyan-ink);
-}
+            border-radius:
+                var(--radius-md);
 
+            padding: 18px;
 
-.badge.blue::before {
-    background: var(--cyan);
-}
+            overflow: hidden;
 
+            border-top:
+                3px solid var(--cyan);
 
-/* =========================================================
-   MESSAGE BOXES
-   ========================================================= */
+        }
 
-.warning {
-    background: var(--warn-bg);
 
-    color: var(--yellow-ink);
+        .summary-box:nth-child(2) {
 
-    border-left: 3px solid var(--yellow);
+            border-top-color:
+                var(--magenta);
 
-    padding: 11px 14px;
+        }
 
-    border-radius:
-        0
-        var(--radius-sm)
-        var(--radius-sm)
-        0;
 
-    margin-top: 10px;
+        .summary-box:nth-child(3) {
 
-    font-size: 12.5px;
-}
+            border-top-color:
+                var(--yellow);
 
+        }
 
-.success {
-    background: var(--ok-bg);
 
-    color: #155C40;
+        .summary-box h3 {
 
-    border-left: 3px solid var(--ok);
+            margin:
+                0 0 7px;
 
-    padding: 11px 14px;
+            color: #BDBCC2;
 
-    border-radius:
-        0
-        var(--radius-sm)
-        var(--radius-sm)
-        0;
+            font-size: 11px;
 
-    margin-top: 10px;
+            font-weight: 600;
 
-    font-size: 12.5px;
-}
+        }
 
 
-.danger-message {
-    background: var(--danger-bg);
+        .summary-box p {
 
-    color: var(--danger);
+            margin: 0;
 
-    border-left: 3px solid var(--danger);
+            color: white;
 
-    padding: 11px 14px;
+            font-size: 25px;
 
-    border-radius:
-        0
-        var(--radius-sm)
-        var(--radius-sm)
-        0;
+            font-weight: 600;
 
-    margin-top: 10px;
+        }
 
-    font-size: 12.5px;
-}
 
+        /* =====================================================
+           TABLES
+        ===================================================== */
 
-.info {
-    background: var(--info-bg);
+        #ordersContainer,
+        #paymentsContainer,
+        #inventoryContainer {
 
-    color: var(--cyan-ink);
+            overflow-x: auto;
 
-    border-left: 3px solid var(--cyan);
+        }
 
-    padding: 11px 14px;
 
-    border-radius:
-        0
-        var(--radius-sm)
-        var(--radius-sm)
-        0;
+        table {
 
-    margin-top: 10px;
+            width: 100%;
 
-    font-size: 12.5px;
-}
+            min-width: 850px;
 
+            margin-top: 18px;
 
-/* =========================================================
-   FILE LISTS
-   ========================================================= */
+            border-collapse: collapse;
 
-.file-list {
-    margin-top: 8px;
+            background: white;
 
-    padding-left: 18px;
+            font-size: 13px;
 
-    color: var(--ink-soft);
-}
+        }
 
 
-.file-list li {
-    margin: 4px 0;
+        th {
 
-    font-size: 12px;
-}
+            padding:
+                9px 10px;
 
+            background:
+                var(--paper-dim);
 
-/* =========================================================
-   PRICE PREVIEW
-   ========================================================= */
+            color:
+                var(--ink-faint);
 
-#pricePreview {
-    position: relative;
+            border-bottom:
+                1px solid var(--line-strong);
 
-    margin-top: 16px;
+            text-align: left;
 
-    font-family:
-        "IBM Plex Mono",
-        Consolas,
-        monospace;
+            font-size: 11px;
 
-    font-size: 13px;
-}
+            font-weight: 600;
 
+            white-space: nowrap;
 
-#pricePreview strong {
-    color: var(--cyan-ink);
+        }
 
-    font-size: 16px;
-}
 
+        td {
 
-/* =========================================================
-   EMPTY STATES
-   ========================================================= */
+            padding:
+                11px 10px;
 
-.empty {
-    text-align: center;
+            color:
+                var(--ink-soft);
 
-    padding: 35px 20px;
+            border-bottom:
+                1px solid var(--line);
 
-    color: var(--ink-faint);
+            vertical-align: middle;
 
-    font-size: 13px;
+        }
 
-    border: 1px dashed var(--line-strong);
 
-    margin-top: 15px;
+        tbody tr {
 
-    background: var(--paper);
-}
+            transition:
+                background 0.12s ease;
 
+        }
 
-/* =========================================================
-   MUTED TEXT
-   ========================================================= */
 
-.muted {
-    color: var(--ink-faint);
+        tbody tr:hover {
 
-    font-size: 12px;
+            background:
+                #FAF8F2;
 
-    line-height: 1.5;
-}
+        }
 
 
-/* =========================================================
-   PAYMENT SECTION
-   ========================================================= */
+        tbody tr:last-child td {
 
-/*
-    Make payment amounts visually important.
-*/
+            border-bottom: none;
 
-#paymentTotal {
-    font-family:
-        "IBM Plex Mono",
-        Consolas,
-        monospace;
+        }
 
-    font-weight: 600;
-}
 
+        td strong {
 
-#paymentAmount {
-    font-family:
-        "IBM Plex Mono",
-        Consolas,
-        monospace;
-}
+            color: var(--key);
 
+        }
 
-/* =========================================================
-   INVENTORY SECTION
-   ========================================================= */
 
-#inventoryContainer table {
-    min-width: 900px;
-}
+        /* =====================================================
+           BADGES
+        ===================================================== */
 
+        .badge {
 
-#inventoryContainer {
-    overflow-x: auto;
-}
+            display: inline-flex;
 
+            align-items: center;
 
-/* =========================================================
-   ORDER SECTION
-   ========================================================= */
+            gap: 5px;
 
-#ordersContainer {
-    overflow-x: auto;
-}
+            padding:
+                4px 9px;
 
+            border-radius: 20px;
 
-/* =========================================================
-   FOOTER
-   ========================================================= */
+            font-size: 10.5px;
 
-footer {
-    text-align: center;
+            font-weight: 600;
 
-    color: var(--ink-faint);
+            white-space: nowrap;
 
-    font-size: 11px;
+        }
 
-    padding: 25px;
 
-    border-top: 1px solid var(--line);
+        .badge::before {
 
-    background: var(--paper-dim);
-}
+            content: "";
 
+            width: 6px;
+            height: 6px;
 
-/* =========================================================
-   SCROLLBAR
-   ========================================================= */
+            border-radius: 50%;
 
-::-webkit-scrollbar {
-    width: 9px;
-    height: 9px;
-}
+        }
 
 
-::-webkit-scrollbar-track {
-    background: var(--paper-dim);
-}
+        .badge.green {
 
+            background:
+                var(--ok-bg);
 
-::-webkit-scrollbar-thumb {
-    background: var(--line-strong);
+            color:
+                var(--ok);
 
-    border-radius: 20px;
-}
+        }
 
 
-::-webkit-scrollbar-thumb:hover {
-    background: var(--ink-faint);
-}
+        .badge.green::before {
 
+            background:
+                var(--ok);
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
+        }
 
-@media (max-width: 900px) {
 
-    main {
-        padding: 20px 16px 40px;
-    }
+        .badge.yellow {
 
+            background:
+                var(--warn-bg);
 
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
+            color:
+                var(--warn);
 
+        }
 
-    .summary-grid {
-        grid-template-columns: 1fr;
-    }
 
-}
+        .badge.yellow::before {
 
+            background:
+                var(--warn);
 
-@media (max-width: 650px) {
+        }
 
-    header h1 {
-        font-size: 22px;
-    }
 
+        .badge.red {
 
-    nav {
-        justify-content: stretch;
-    }
+            background:
+                var(--danger-bg);
 
+            color:
+                var(--danger);
 
-    nav button {
-        flex: 1;
+        }
 
-        padding:
-            12px
-            8px;
 
-        font-size: 11px;
-    }
+        .badge.red::before {
 
+            background:
+                var(--danger);
 
-    main {
-        padding:
-            16px
-            10px
-            35px;
-    }
+        }
 
 
-    .card {
-        padding: 15px;
-    }
+        .badge.blue {
 
+            background:
+                var(--info-bg);
 
-    table {
-        min-width: 750px;
-    }
+            color:
+                var(--cyan-ink);
 
-}
+        }
+
+
+        .badge.blue::before {
+
+            background:
+                var(--cyan);
+
+        }
+
+
+        /* =====================================================
+           MESSAGE BOXES
+        ===================================================== */
+
+        .warning {
+
+            background:
+                var(--warn-bg);
+
+            color:
+                var(--yellow-ink);
+
+            border-left:
+                3px solid var(--yellow);
+
+            padding:
+                11px 14px;
+
+            border-radius:
+                0
+                var(--radius-sm)
+                var(--radius-sm)
+                0;
+
+            margin-top: 10px;
+
+            font-size: 12.5px;
+
+        }
+
+
+        .success {
+
+            background:
+                var(--ok-bg);
+
+            color:
+                #155C40;
+
+            border-left:
+                3px solid var(--ok);
+
+            padding:
+                11px 14px;
+
+            border-radius:
+                0
+                var(--radius-sm)
+                var(--radius-sm)
+                0;
+
+            margin-top: 10px;
+
+            font-size: 12.5px;
+
+        }
+
+
+        .info {
+
+            background:
+                var(--info-bg);
+
+            color:
+                var(--cyan-ink);
+
+            border-left:
+                3px solid var(--cyan);
+
+            padding:
+                11px 14px;
+
+            border-radius:
+                0
+                var(--radius-sm)
+                var(--radius-sm)
+                0;
+
+            margin-top: 10px;
+
+            font-size: 12.5px;
+
+        }
+
+
+        /* =====================================================
+           FILE LIST
+        ===================================================== */
+
+        .file-list {
+
+            margin-top: 8px;
+
+            padding-left: 18px;
+
+            color:
+                var(--ink-soft);
+
+        }
+
+
+        .file-list li {
+
+            margin:
+                4px 0;
+
+            font-size: 12px;
+
+        }
+
+
+        /* =====================================================
+           PRICE PREVIEW
+        ===================================================== */
+
+        #pricePreview {
+
+            margin-top: 16px;
+
+            font-size: 13px;
+
+            font-family:
+                Consolas,
+                "Courier New",
+                monospace;
+
+        }
+
+
+        #pricePreview strong {
+
+            color:
+                var(--cyan-ink);
+
+            font-size: 17px;
+
+        }
+
+
+        /* =====================================================
+           EMPTY
+        ===================================================== */
+
+        .empty {
+
+            text-align: center;
+
+            padding:
+                35px 20px;
+
+            color:
+                var(--ink-faint);
+
+            font-size: 13px;
+
+            border:
+                1px dashed
+                var(--line-strong);
+
+            margin-top: 15px;
+
+            background:
+                var(--paper);
+
+        }
+
+
+        /* =====================================================
+           MUTED
+        ===================================================== */
+
+        .muted {
+
+            color:
+                var(--ink-faint);
+
+            font-size: 12px;
+
+            line-height:
+                1.5;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            text-align: center;
+
+            color:
+                var(--ink-faint);
+
+            font-size: 11px;
+
+            padding: 25px;
+
+            border-top:
+                1px solid var(--line);
+
+            background:
+                var(--paper-dim);
+
+        }
+
+
+        /* =====================================================
+           SCROLLBAR
+        ===================================================== */
+
+        ::-webkit-scrollbar {
+
+            width: 9px;
+            height: 9px;
+
+        }
+
+
+        ::-webkit-scrollbar-track {
+
+            background:
+                var(--paper-dim);
+
+        }
+
+
+        ::-webkit-scrollbar-thumb {
+
+            background:
+                var(--line-strong);
+
+            border-radius: 20px;
+
+        }
+
+
+        ::-webkit-scrollbar-thumb:hover {
+
+            background:
+                var(--ink-faint);
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            main {
+
+                padding:
+                    20px 16px 40px;
+
+            }
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .summary-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            header h1 {
+
+                font-size: 22px;
+
+            }
+
+
+            nav button {
+
+                flex: 1;
+
+                padding:
+                    12px 8px;
+
+                font-size: 11px;
+
+            }
+
+
+            main {
+
+                padding:
+                    16px 10px 35px;
+
+            }
+
+
+            .card {
+
+                padding: 15px;
+
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
 <body>
 
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header>
 
-    <h1>Grea San Jave Printing Services</h1>
+    <h1>
+        Grea San Jave Printing Services
+    </h1>
 
     <p>
-        Order, Payment & Inventory Prototype
+        Order, Payment & Inventory Management
     </p>
 
 </header>
 
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
 <nav>
 
@@ -1163,24 +1336,39 @@ footer {
         class="nav-btn active"
         onclick="showModule('module3', this)"
     >
-        Module 3 - Order Intake
+
+        Module 3
+        -
+        Order Intake
+
     </button>
+
 
     <button
         class="nav-btn"
         onclick="showModule('module7', this)"
     >
-        Module 7 - Payments
+
+        Module 7
+        -
+        Payments
+
     </button>
+
 
     <button
         class="nav-btn"
         onclick="showModule('module9', this)"
     >
-        Module 9 - Inventory
+
+        Module 9
+        -
+        Inventory
+
     </button>
 
 </nav>
+
 
 
 <main>
@@ -1188,23 +1376,27 @@ footer {
 
 <!-- =====================================================
      MODULE 3
-     ORDER INTAKE & FILE SUBMISSION
 ===================================================== -->
 
-<section id="module3" class="module active">
+<section
+    id="module3"
+    class="module active"
+>
+
 
     <div class="card">
 
         <h2>
-            Module 3 - Order Intake & File Submission
+            Order Intake & File Submission
         </h2>
 
         <p class="muted">
 
-            Add files received from Messenger, Gmail,
-            Bluetooth, or in-person customers.
+            Record files received through Messenger,
+            Gmail, Bluetooth, or in-person transactions.
 
         </p>
+
 
         <br>
 
@@ -1248,7 +1440,9 @@ footer {
                     Submission Channel
                 </label>
 
-                <select id="submissionChannel">
+                <select
+                    id="submissionChannel"
+                >
 
                     <option value="Messenger">
                         Messenger
@@ -1337,8 +1531,8 @@ footer {
 
                 <small class="muted">
 
-                    This automatically updates when you
-                    upload image files.
+                    Image files automatically count
+                    as individual pages.
 
                 </small>
 
@@ -1357,19 +1551,35 @@ footer {
                 >
 
                     <option value="Black Text">
-                        Black Text - ₱3/page
+
+                        Black Text
+                        -
+                        ₱3/page
+
                     </option>
 
                     <option value="Minimal Color">
-                        Minimal Color - ₱5/page
+
+                        Minimal Color
+                        -
+                        ₱5/page
+
                     </option>
 
                     <option value="Small Image">
-                        Small Image - ₱10/page
+
+                        Small Image
+                        -
+                        ₱10/page
+
                     </option>
 
                     <option value="Full Color">
-                        Full Color - ₱20/page
+
+                        Full Color
+                        -
+                        ₱20/page
+
                     </option>
 
                 </select>
@@ -1391,7 +1601,10 @@ footer {
                 >
 
                 <small class="muted">
-                    Temporary default. Client still needs to confirm.
+
+                    Temporary default until client
+                    confirms the actual threshold.
+
                 </small>
 
             </div>
@@ -1409,12 +1622,21 @@ footer {
             type="file"
             id="orderFiles"
             multiple
-            accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+            accept="
+                .pdf,
+                .doc,
+                .docx,
+                .jpg,
+                .jpeg,
+                .png
+            "
             onchange="handleFileSelection()"
         >
 
 
-        <div id="fileFeedback"></div>
+        <div
+            id="fileFeedback"
+        ></div>
 
 
         <div
@@ -1423,7 +1645,10 @@ footer {
         >
 
             Estimated Price:
-            <strong>₱3.00</strong>
+
+            <strong>
+                ₱3.00
+            </strong>
 
         </div>
 
@@ -1451,12 +1676,17 @@ footer {
         <input
             type="text"
             id="orderSearch"
-            placeholder="Search by order ID, customer, or file name..."
+            placeholder="
+                Search by order ID,
+                customer, or file name...
+            "
             oninput="renderOrders()"
         >
 
 
-        <div id="ordersContainer"></div>
+        <div
+            id="ordersContainer"
+        ></div>
 
     </div>
 
@@ -1466,17 +1696,29 @@ footer {
 
 <!-- =====================================================
      MODULE 7
-     PAYMENT & TRANSACTION RECORDS
 ===================================================== -->
 
-<section id="module7" class="module">
+<section
+    id="module7"
+    class="module"
+>
 
 
     <div class="card">
 
         <h2>
-            Module 7 - Payment & Transaction Records
+            Payment & Transaction Records
         </h2>
+
+        <p class="muted">
+
+            Record customer payments and automatically
+            calculate change and remaining balance.
+
+        </p>
+
+
+        <br>
 
 
         <div class="form-grid">
@@ -1488,7 +1730,9 @@ footer {
                     Select Order
                 </label>
 
-                <select id="paymentOrder"></select>
+                <select
+                    id="paymentOrder"
+                ></select>
 
             </div>
 
@@ -1524,8 +1768,9 @@ footer {
 
                 <small class="muted">
 
-                    Example: Order is ₱100,
-                    customer gives ₱500.
+                    Example:
+                    Order = ₱100,
+                    customer gives = ₱500.
 
                 </small>
 
@@ -1538,7 +1783,9 @@ footer {
                     Payment Method
                 </label>
 
-                <select id="paymentMethod">
+                <select
+                    id="paymentMethod"
+                >
 
                     <option value="Cash">
                         Cash
@@ -1563,7 +1810,9 @@ footer {
                     Payment Type
                 </label>
 
-                <select id="paymentType">
+                <select
+                    id="paymentType"
+                >
 
                     <option value="Down Payment">
                         Down Payment
@@ -1595,7 +1844,9 @@ footer {
         </button>
 
 
-        <div id="paymentMessage"></div>
+        <div
+            id="paymentMessage"
+        ></div>
 
     </div>
 
@@ -1617,7 +1868,9 @@ footer {
                     Total Sales Recorded
                 </h3>
 
-                <p id="totalSales">
+                <p
+                    id="totalSales"
+                >
                     ₱0.00
                 </p>
 
@@ -1630,7 +1883,9 @@ footer {
                     Total Paid
                 </h3>
 
-                <p id="totalPaid">
+                <p
+                    id="totalPaid"
+                >
                     ₱0.00
                 </p>
 
@@ -1643,7 +1898,9 @@ footer {
                     Outstanding Balance
                 </h3>
 
-                <p id="totalBalance">
+                <p
+                    id="totalBalance"
+                >
                     ₱0.00
                 </p>
 
@@ -1662,10 +1919,11 @@ footer {
             Transaction Records
         </h2>
 
-        <div id="paymentsContainer"></div>
+        <div
+            id="paymentsContainer"
+        ></div>
 
     </div>
-
 
 </section>
 
@@ -1673,17 +1931,29 @@ footer {
 
 <!-- =====================================================
      MODULE 9
-     INVENTORY
 ===================================================== -->
 
-<section id="module9" class="module">
+<section
+    id="module9"
+    class="module"
+>
 
 
     <div class="card">
 
         <h2>
-            Module 9 - Inventory Management
+            Inventory Management
         </h2>
+
+        <p class="muted">
+
+            Track shop stock and home stock separately
+            and identify supplies that need restocking.
+
+        </p>
+
+
+        <br>
 
 
         <div class="form-grid">
@@ -1710,7 +1980,9 @@ footer {
                     Category
                 </label>
 
-                <select id="inventoryCategory">
+                <select
+                    id="inventoryCategory"
+                >
 
                     <option value="Bond Paper">
                         Bond Paper
@@ -1750,7 +2022,9 @@ footer {
                 <input
                     type="text"
                     id="inventoryUnit"
-                    placeholder="box / bottle / pack"
+                    placeholder="
+                        box / pack / bottle
+                    "
                 >
 
             </div>
@@ -1809,9 +2083,8 @@ footer {
 
         <p class="muted">
 
-            Reorder level is currently set to 1.
-            This can be changed once the client confirms
-            their preferred rule.
+            The reorder level is currently 1 as a
+            temporary default.
 
         </p>
 
@@ -1826,7 +2099,9 @@ footer {
         </button>
 
 
-        <div id="inventoryMessage"></div>
+        <div
+            id="inventoryMessage"
+        ></div>
 
     </div>
 
@@ -1838,10 +2113,11 @@ footer {
             Inventory Overview
         </h2>
 
-        <div id="inventoryContainer"></div>
+        <div
+            id="inventoryContainer"
+        ></div>
 
     </div>
-
 
 </section>
 
@@ -1849,10 +2125,11 @@ footer {
 </main>
 
 
+
 <footer>
 
     Grea San Jave Printing Services
-    - System Prototype
+    — System Prototype
 
 </footer>
 
@@ -1861,9 +2138,9 @@ footer {
 <script>
 
 
-/* =====================================================
+/* =========================================================
    PRICE SETTINGS
-===================================================== */
+========================================================= */
 
 const PRICE_PER_PAGE = {
 
@@ -1879,32 +2156,38 @@ const PRICE_PER_PAGE = {
 
 
 
-/* =====================================================
-   DATA
-===================================================== */
+/* =========================================================
+   LOAD DATA
+========================================================= */
 
 let orders =
     JSON.parse(
-        localStorage.getItem("gsj_orders")
+        localStorage.getItem(
+            "gsj_orders"
+        )
     ) || [];
 
 
 let payments =
     JSON.parse(
-        localStorage.getItem("gsj_payments")
+        localStorage.getItem(
+            "gsj_payments"
+        )
     ) || [];
 
 
 let inventory =
     JSON.parse(
-        localStorage.getItem("gsj_inventory")
+        localStorage.getItem(
+            "gsj_inventory"
+        )
     ) || [];
 
 
 
-/* =====================================================
+/* =========================================================
    SAVE DATA
-===================================================== */
+========================================================= */
 
 function saveData() {
 
@@ -1913,10 +2196,12 @@ function saveData() {
         JSON.stringify(orders)
     );
 
+
     localStorage.setItem(
         "gsj_payments",
         JSON.stringify(payments)
     );
+
 
     localStorage.setItem(
         "gsj_inventory",
@@ -1927,44 +2212,77 @@ function saveData() {
 
 
 
-/* =====================================================
+/* =========================================================
    HELPERS
-===================================================== */
+========================================================= */
 
 function generateOrderID() {
 
-    return "ORD-" +
-        String(Date.now()).slice(-6);
+    return (
+        "ORD-" +
+        String(Date.now())
+            .slice(-6)
+    );
+
+}
+
+
+function generatePaymentID() {
+
+    return (
+        "PAY-" +
+        String(Date.now())
+            .slice(-6)
+    );
+
+}
+
+
+function generateInventoryID() {
+
+    return (
+        "INV-" +
+        String(Date.now())
+            .slice(-6)
+    );
 
 }
 
 
 function formatMoney(amount) {
 
-    return "₱" +
-        Number(amount).toLocaleString(
-            "en-PH",
-            {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }
-        );
+    return (
+        "₱" +
+        Number(amount)
+            .toLocaleString(
+                "en-PH",
+                {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }
+            )
+    );
 
 }
 
 
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
+/* =========================================================
+   MODULE NAVIGATION
+========================================================= */
 
-function showModule(moduleID, button) {
+function showModule(
+    moduleID,
+    button
+) {
 
     document
         .querySelectorAll(".module")
         .forEach(module => {
 
-            module.classList.remove("active");
+            module.classList.remove(
+                "active"
+            );
 
         });
 
@@ -1973,7 +2291,9 @@ function showModule(moduleID, button) {
         .querySelectorAll(".nav-btn")
         .forEach(btn => {
 
-            btn.classList.remove("active");
+            btn.classList.remove(
+                "active"
+            );
 
         });
 
@@ -1985,7 +2305,9 @@ function showModule(moduleID, button) {
 
     if (button) {
 
-        button.classList.add("active");
+        button.classList.add(
+            "active"
+        );
 
     }
 
@@ -1996,25 +2318,29 @@ function showModule(moduleID, button) {
 
 
 
-/* =====================================================
+/* =========================================================
    FILE SELECTION
-===================================================== */
+========================================================= */
 
 function handleFileSelection() {
 
     const fileInput =
-        document.getElementById("orderFiles");
+        document.getElementById(
+            "orderFiles"
+        );
 
 
     const files =
-        Array.from(fileInput.files);
+        Array.from(
+            fileInput.files
+        );
 
 
     /*
-        IMPORTANT:
+        IMAGE FILE RULE
 
-        If the customer uploads individual images,
-        every image is treated as one printable page.
+        Every uploaded JPG/PNG image
+        represents one printable page.
 
         Example:
 
@@ -2025,43 +2351,41 @@ function handleFileSelection() {
         ₱3
         =
         ₱18
-
-        For PDFs, we cannot accurately know the
-        number of pages using this simple browser
-        prototype, so the Pages field can still
-        be manually adjusted.
     */
 
     const imageFiles =
         files.filter(file => {
 
             return [
+
                 "image/jpeg",
                 "image/jpg",
                 "image/png"
-            ].includes(file.type);
+
+            ].includes(
+                file.type
+            );
 
         });
 
 
-    if (imageFiles.length > 0) {
+    if (
+        imageFiles.length > 0 &&
+        imageFiles.length === files.length
+    ) {
 
-        /*
-            If every uploaded file is an image,
-            automatically use the file count as pages.
-        */
-
-        if (imageFiles.length === files.length) {
-
-            document.getElementById("pages").value =
-                imageFiles.length;
-
-        }
+        document.getElementById(
+            "pages"
+        ).value =
+            imageFiles.length;
 
     }
 
 
-    updateFileFeedback(files);
+    updateFileFeedback(
+        files
+    );
+
 
     updatePricePreview();
 
@@ -2069,21 +2393,29 @@ function handleFileSelection() {
 
 
 
-/* =====================================================
+/* =========================================================
    FILE FEEDBACK
-===================================================== */
+========================================================= */
 
-function updateFileFeedback(files) {
+function updateFileFeedback(
+    files
+) {
 
     const feedback =
-        document.getElementById("fileFeedback");
+        document.getElementById(
+            "fileFeedback"
+        );
 
 
-    if (files.length === 0) {
+    if (
+        files.length === 0
+    ) {
 
-        feedback.innerHTML = "";
+        feedback.innerHTML =
+            "";
 
         return;
+
     }
 
 
@@ -2098,10 +2430,16 @@ function updateFileFeedback(files) {
     const largeFiles =
         files.filter(file => {
 
-            return (
+            const sizeMB =
                 file.size /
-                (1024 * 1024)
-            ) >= threshold;
+                (
+                    1024 *
+                    1024
+                );
+
+            return (
+                sizeMB >= threshold
+            );
 
         });
 
@@ -2118,7 +2456,9 @@ function updateFileFeedback(files) {
     `;
 
 
-    if (largeFiles.length > 0) {
+    if (
+        largeFiles.length > 0
+    ) {
 
         html += `
 
@@ -2134,21 +2474,26 @@ function updateFileFeedback(files) {
 
                 <ul class="file-list">
 
-                    ${largeFiles.map(file => `
+                    ${largeFiles.map(
+                        file => `
 
-                        <li>
+                            <li>
 
-                            ${file.name}
-                            -
-                            ${(
-                                file.size /
-                                (1024 * 1024)
-                            ).toFixed(2)}
-                            MB
+                                ${file.name}
+                                -
+                                ${(
+                                    file.size /
+                                    (
+                                        1024 *
+                                        1024
+                                    )
+                                ).toFixed(2)}
+                                MB
 
-                        </li>
+                            </li>
 
-                    `).join("")}
+                        `
+                    ).join("")}
 
                 </ul>
 
@@ -2159,36 +2504,45 @@ function updateFileFeedback(files) {
     }
 
 
-    feedback.innerHTML = html;
+    feedback.innerHTML =
+        html;
 
 }
 
 
 
-/* =====================================================
+/* =========================================================
    PRICE PREVIEW
-===================================================== */
+========================================================= */
 
 function updatePricePreview() {
 
     const pages =
         Number(
-            document.getElementById("pages").value
+            document.getElementById(
+                "pages"
+            ).value
         ) || 0;
 
 
     const copies =
         Number(
-            document.getElementById("copies").value
+            document.getElementById(
+                "copies"
+            ).value
         ) || 0;
 
 
     const printType =
-        document.getElementById("printType").value;
+        document.getElementById(
+            "printType"
+        ).value;
 
 
     const price =
-        PRICE_PER_PAGE[printType];
+        PRICE_PER_PAGE[
+            printType
+        ];
 
 
     const total =
@@ -2197,21 +2551,29 @@ function updatePricePreview() {
         price;
 
 
-    document.getElementById("pricePreview").innerHTML = `
+    document.getElementById(
+        "pricePreview"
+    ).innerHTML = `
 
         Estimated Price:
 
         <strong>
-            ${formatMoney(total)}
+
+            ${formatMoney(
+                total
+            )}
+
         </strong>
 
         <br>
 
         <small>
 
-            ${pages} page(s)
+            ${pages}
+            page(s)
             ×
-            ${copies} copy/copies
+            ${copies}
+            copy/copies
             ×
             ₱${price}/page
 
@@ -2223,129 +2585,147 @@ function updatePricePreview() {
 
 
 
-/* =====================================================
+/* =========================================================
    CREATE ORDER
-===================================================== */
+========================================================= */
 
 function createOrder() {
 
     const customerName =
-        document
-            .getElementById("customerName")
-            .value
-            .trim();
+        document.getElementById(
+            "customerName"
+        ).value.trim();
 
 
     const customerContact =
-        document
-            .getElementById("customerContact")
-            .value
-            .trim();
+        document.getElementById(
+            "customerContact"
+        ).value.trim();
 
 
     const submissionChannel =
-        document
-            .getElementById("submissionChannel")
-            .value;
+        document.getElementById(
+            "submissionChannel"
+        ).value;
 
 
     const paperSize =
-        document
-            .getElementById("paperSize")
-            .value;
+        document.getElementById(
+            "paperSize"
+        ).value;
 
 
     const pages =
         Number(
-            document
-                .getElementById("pages")
-                .value
+            document.getElementById(
+                "pages"
+            ).value
         );
 
 
     const copies =
         Number(
-            document
-                .getElementById("copies")
-                .value
+            document.getElementById(
+                "copies"
+            ).value
         );
 
 
     const printType =
-        document
-            .getElementById("printType")
-            .value;
+        document.getElementById(
+            "printType"
+        ).value;
 
 
     const files =
         Array.from(
-            document
-                .getElementById("orderFiles")
-                .files
+            document.getElementById(
+                "orderFiles"
+            ).files
         );
 
 
-    const largeFileThreshold =
+    const threshold =
         Number(
-            document
-                .getElementById("largeFileThreshold")
-                .value
+            document.getElementById(
+                "largeFileThreshold"
+            ).value
         );
 
 
-    if (!customerName) {
+    if (
+        !customerName
+    ) {
 
         alert(
             "Please enter the customer's name."
         );
 
         return;
+
     }
 
 
-    if (pages <= 0) {
+    if (
+        pages <= 0
+    ) {
 
         alert(
             "Pages must be at least 1."
         );
 
         return;
+
     }
 
 
-    if (copies <= 0) {
+    if (
+        copies <= 0
+    ) {
 
         alert(
             "Copies must be at least 1."
         );
 
         return;
+
     }
 
 
-    if (files.length === 0) {
+    if (
+        files.length === 0
+    ) {
 
         alert(
             "Please upload at least one file."
         );
 
         return;
+
     }
 
 
     const largeFiles =
         files.filter(file => {
 
-            return (
+            const sizeMB =
                 file.size /
-                (1024 * 1024)
-            ) >= largeFileThreshold;
+                (
+                    1024 *
+                    1024
+                );
+
+            return (
+                sizeMB >= threshold
+            );
 
         });
 
 
     const pricePerPage =
-        PRICE_PER_PAGE[printType];
+        PRICE_PER_PAGE[
+            printType
+        ];
 
 
     const totalAmount =
@@ -2399,23 +2779,27 @@ function createOrder() {
                 sizeMB:
                     (
                         file.size /
-                        (1024 * 1024)
+                        (
+                            1024 *
+                            1024
+                        )
                     ).toFixed(2)
 
             })),
 
         createdAt:
-            new Date().toLocaleString()
+            new Date()
+                .toLocaleString()
 
     };
 
 
-    orders.push(order);
+    orders.push(
+        order
+    );
+
 
     saveData();
-
-
-    displayFileFeedback(order);
 
 
     document.getElementById(
@@ -2443,6 +2827,11 @@ function createOrder() {
     ).value = "";
 
 
+    document.getElementById(
+        "fileFeedback"
+    ).innerHTML = "";
+
+
     updatePricePreview();
 
     renderOrders();
@@ -2452,24 +2841,32 @@ function createOrder() {
 
     alert(
 
-        "Order " +
+        "Order created successfully!\n\n" +
+
+        "Order ID: " +
         order.id +
-        " created successfully.\n\n" +
+
+        "\n\n" +
 
         "Files: " +
         order.files.length +
+
         "\n" +
 
         "Pages: " +
         order.pages +
+
         "\n" +
 
         "Copies: " +
         order.copies +
+
         "\n\n" +
 
         "Total: " +
-        formatMoney(order.totalAmount)
+        formatMoney(
+            order.totalAmount
+        )
 
     );
 
@@ -2477,57 +2874,9 @@ function createOrder() {
 
 
 
-/* =====================================================
-   FILE FEEDBACK AFTER ORDER
-===================================================== */
-
-function displayFileFeedback(order) {
-
-    const box =
-        document.getElementById(
-            "fileFeedback"
-        );
-
-
-    if (order.largeFiles.length > 0) {
-
-        box.innerHTML = `
-
-            <div class="warning">
-
-                <strong>
-                    Large file detected.
-                </strong>
-
-                <br>
-
-                Customer approval is required.
-
-            </div>
-
-        `;
-
-    } else {
-
-        box.innerHTML = `
-
-            <div class="success">
-
-                Files passed the basic file check.
-
-            </div>
-
-        `;
-
-    }
-
-}
-
-
-
-/* =====================================================
-   DISPLAY ORDERS
-===================================================== */
+/* =========================================================
+   ORDER TABLE
+========================================================= */
 
 function renderOrders() {
 
@@ -2538,42 +2887,47 @@ function renderOrders() {
 
 
     const search =
-        document
-            .getElementById("orderSearch")
-            .value
-            .toLowerCase();
+        document.getElementById(
+            "orderSearch"
+        ).value
+        .toLowerCase();
 
 
     const filteredOrders =
-        orders.filter(order => {
+        orders.filter(
+            order => {
 
-            const fileNames =
-                order.files
-                    .map(file => file.name)
-                    .join(" ");
+                const files =
+                    order.files
+                        .map(
+                            file =>
+                                file.name
+                        )
+                        .join(" ");
 
 
-            return (
+                return (
 
-                order.id
-                    .toLowerCase()
-                    .includes(search)
+                    order.id
+                        .toLowerCase()
+                        .includes(search)
 
-                ||
+                    ||
 
-                order.customerName
-                    .toLowerCase()
-                    .includes(search)
+                    order.customerName
+                        .toLowerCase()
+                        .includes(search)
 
-                ||
+                    ||
 
-                fileNames
-                    .toLowerCase()
-                    .includes(search)
+                    files
+                        .toLowerCase()
+                        .includes(search)
 
-            );
+                );
 
-        });
+            }
+        );
 
 
     if (
@@ -2583,7 +2937,9 @@ function renderOrders() {
         container.innerHTML = `
 
             <div class="empty">
+
                 No orders found.
+
             </div>
 
         `;
@@ -2601,21 +2957,37 @@ function renderOrders() {
 
                 <tr>
 
-                    <th>Order ID</th>
+                    <th>
+                        Order ID
+                    </th>
 
-                    <th>Customer</th>
+                    <th>
+                        Customer
+                    </th>
 
-                    <th>Channel</th>
+                    <th>
+                        Channel
+                    </th>
 
-                    <th>Files</th>
+                    <th>
+                        Files
+                    </th>
 
-                    <th>Print Details</th>
+                    <th>
+                        Print Details
+                    </th>
 
-                    <th>Total</th>
+                    <th>
+                        Total
+                    </th>
 
-                    <th>Status</th>
+                    <th>
+                        Status
+                    </th>
 
-                    <th>Action</th>
+                    <th>
+                        Action
+                    </th>
 
                 </tr>
 
@@ -2625,207 +2997,241 @@ function renderOrders() {
             <tbody>
 
 
-                ${filteredOrders.map(order => `
+                ${filteredOrders.map(
+                    order => `
 
-                    <tr>
+                        <tr>
 
-                        <td>
+                            <td>
 
-                            <strong>
-                                ${order.id}
-                            </strong>
+                                <strong>
+                                    ${order.id}
+                                </strong>
 
-                            <br>
+                                <br>
 
-                            <span class="muted">
-                                ${order.createdAt}
-                            </span>
+                                <span class="muted">
 
-                        </td>
+                                    ${order.createdAt}
+
+                                </span>
+
+                            </td>
 
 
-                        <td>
+                            <td>
 
-                            ${order.customerName}
+                                ${order.customerName}
 
-                            <br>
+                                <br>
 
-                            <span class="muted">
+                                <span class="muted">
+
+                                    ${
+                                        order.customerContact ||
+                                        "No contact"
+                                    }
+
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                ${order.submissionChannel}
+
+                            </td>
+
+
+                            <td>
+
+                                <strong>
+
+                                    ${order.files.length}
+                                    file(s)
+
+                                </strong>
+
+
+                                <ul class="file-list">
+
+                                    ${
+                                        order.files
+                                            .map(
+                                                file =>
+                                                    `
+                                                        <li>
+
+                                                            ${file.name}
+
+                                                            (
+                                                            ${file.sizeMB}
+                                                            MB
+                                                            )
+
+                                                        </li>
+                                                    `
+                                            )
+                                            .join("")
+                                    }
+
+                                </ul>
+
 
                                 ${
-                                    order.customerContact ||
-                                    "No contact"
+                                    order.largeFiles.length > 0
+
+                                    ?
+
+                                    `
+                                        <span
+                                            class="badge yellow"
+                                        >
+
+                                            Approval Required
+
+                                        </span>
+                                    `
+
+                                    :
+
+                                    ""
                                 }
 
-                            </span>
-
-                        </td>
+                            </td>
 
 
-                        <td>
-                            ${order.submissionChannel}
-                        </td>
+                            <td>
+
+                                ${order.pages}
+                                page(s)
+
+                                <br>
+
+                                ${order.copies}
+                                copy/copies
+
+                                <br>
+
+                                ${order.paperSize}
+
+                                <br>
+
+                                ${order.printType}
+
+                            </td>
 
 
-                        <td>
+                            <td>
 
-                            <strong>
-                                ${order.files.length}
-                                file(s)
-                            </strong>
+                                <strong>
 
+                                    ${formatMoney(
+                                        order.totalAmount
+                                    )}
 
-                            <ul class="file-list">
+                                </strong>
 
-                                ${order.files.map(file => `
-
-                                    <li>
-
-                                        ${file.name}
-
-                                        (${file.sizeMB} MB)
-
-                                    </li>
-
-                                `).join("")}
-
-                            </ul>
+                            </td>
 
 
-                            ${
-                                order.largeFiles.length > 0
+                            <td>
 
-                                ?
-
-                                `<span class="badge yellow">
-                                    Approval Required
-                                </span>`
-
-                                :
-
-                                ""
-                            }
-
-                        </td>
-
-
-                        <td>
-
-                            ${order.pages}
-                            page(s)
-
-                            <br>
-
-                            ${order.copies}
-                            copy/copies
-
-                            <br>
-
-                            ${order.paperSize}
-
-                            <br>
-
-                            ${order.printType}
-
-                        </td>
-
-
-                        <td>
-
-                            <strong>
-
-                                ${formatMoney(
-                                    order.totalAmount
-                                )}
-
-                            </strong>
-
-                        </td>
-
-
-                        <td>
-
-                            <select
-                                onchange="updateOrderStatus(
-                                    '${order.id}',
-                                    this.value
-                                )"
-                            >
-
-                                <option
-                                    value="Pending"
-                                    ${
-                                        order.status ===
-                                        "Pending"
-                                            ? "selected"
-                                            : ""
-                                    }
+                                <select
+                                    onchange="
+                                        updateOrderStatus(
+                                            '${order.id}',
+                                            this.value
+                                        )
+                                    "
                                 >
-                                    Pending
-                                </option>
+
+                                    <option
+                                        value="Pending"
+                                        ${
+                                            order.status ===
+                                            "Pending"
+                                                ? "selected"
+                                                : ""
+                                        }
+                                    >
+
+                                        Pending
+
+                                    </option>
 
 
-                                <option
-                                    value="Printing"
-                                    ${
-                                        order.status ===
-                                        "Printing"
-                                            ? "selected"
-                                            : ""
-                                    }
+                                    <option
+                                        value="Printing"
+                                        ${
+                                            order.status ===
+                                            "Printing"
+                                                ? "selected"
+                                                : ""
+                                        }
+                                    >
+
+                                        Printing
+
+                                    </option>
+
+
+                                    <option
+                                        value="Printed"
+                                        ${
+                                            order.status ===
+                                            "Printed"
+                                                ? "selected"
+                                                : ""
+                                        }
+                                    >
+
+                                        Printed
+
+                                    </option>
+
+
+                                    <option
+                                        value="Released"
+                                        ${
+                                            order.status ===
+                                            "Released"
+                                                ? "selected"
+                                                : ""
+                                        }
+                                    >
+
+                                        Released
+
+                                    </option>
+
+                                </select>
+
+                            </td>
+
+
+                            <td>
+
+                                <button
+                                    class="danger"
+                                    onclick="
+                                        deleteOrder(
+                                            '${order.id}'
+                                        )
+                                    "
                                 >
-                                    Printing
-                                </option>
 
+                                    Delete
 
-                                <option
-                                    value="Printed"
-                                    ${
-                                        order.status ===
-                                        "Printed"
-                                            ? "selected"
-                                            : ""
-                                    }
-                                >
-                                    Printed
-                                </option>
+                                </button>
 
+                            </td>
 
-                                <option
-                                    value="Released"
-                                    ${
-                                        order.status ===
-                                        "Released"
-                                            ? "selected"
-                                            : ""
-                                    }
-                                >
-                                    Released
-                                </option>
+                        </tr>
 
-                            </select>
-
-                        </td>
-
-
-                        <td>
-
-                            <button
-                                class="danger"
-                                onclick="deleteOrder(
-                                    '${order.id}'
-                                )"
-                            >
-
-                                Delete
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                `).join("")}
+                    `
+                ).join("")}
 
 
             </tbody>
@@ -2838,9 +3244,9 @@ function renderOrders() {
 
 
 
-/* =====================================================
+/* =========================================================
    UPDATE ORDER STATUS
-===================================================== */
+========================================================= */
 
 function updateOrderStatus(
     orderID,
@@ -2850,16 +3256,21 @@ function updateOrderStatus(
     const order =
         orders.find(
             order =>
-                order.id === orderID
+                order.id ===
+                orderID
         );
 
 
     if (!order) {
+
         return;
+
     }
 
 
-    order.status = newStatus;
+    order.status =
+        newStatus;
+
 
     saveData();
 
@@ -2869,11 +3280,13 @@ function updateOrderStatus(
 
 
 
-/* =====================================================
+/* =========================================================
    DELETE ORDER
-===================================================== */
+========================================================= */
 
-function deleteOrder(orderID) {
+function deleteOrder(
+    orderID
+) {
 
     if (
         !confirm(
@@ -2891,7 +3304,8 @@ function deleteOrder(orderID) {
     orders =
         orders.filter(
             order =>
-                order.id !== orderID
+                order.id !==
+                orderID
         );
 
 
@@ -2905,10 +3319,9 @@ function deleteOrder(orderID) {
 
 
 
-/* =====================================================
-   MODULE 7
-   PAYMENT
-===================================================== */
+/* =========================================================
+   PAYMENT ORDERS
+========================================================= */
 
 function updatePaymentOrders() {
 
@@ -2918,17 +3331,25 @@ function updatePaymentOrders() {
         );
 
 
-    if (orders.length === 0) {
+    if (
+        orders.length === 0
+    ) {
 
         select.innerHTML = `
+
             <option value="">
+
                 No orders available
+
             </option>
+
         `;
+
 
         document.getElementById(
             "paymentTotal"
         ).value = "";
+
 
         return;
 
@@ -2937,19 +3358,23 @@ function updatePaymentOrders() {
 
     select.innerHTML =
 
-        orders.map(order => `
+        orders
+            .map(
+                order => `
 
-            <option
-                value="${order.id}"
-            >
+                    <option
+                        value="${order.id}"
+                    >
 
-                ${order.id}
-                -
-                ${order.customerName}
+                        ${order.id}
+                        -
+                        ${order.customerName}
 
-            </option>
+                    </option>
 
-        `).join("");
+                `
+            )
+            .join("");
 
 
     updatePaymentTotal();
@@ -2958,8 +3383,14 @@ function updatePaymentOrders() {
 
 
 
+/* =========================================================
+   PAYMENT ORDER CHANGE
+========================================================= */
+
 document
-    .getElementById("paymentOrder")
+    .getElementById(
+        "paymentOrder"
+    )
     .addEventListener(
         "change",
         updatePaymentTotal
@@ -2967,9 +3398,9 @@ document
 
 
 
-/* =====================================================
-   PAYMENT TOTAL
-===================================================== */
+/* =========================================================
+   UPDATE PAYMENT TOTAL
+========================================================= */
 
 function updatePaymentTotal() {
 
@@ -2982,7 +3413,8 @@ function updatePaymentTotal() {
     const order =
         orders.find(
             order =>
-                order.id === orderID
+                order.id ===
+                orderID
         );
 
 
@@ -3000,15 +3432,16 @@ function updatePaymentTotal() {
     document.getElementById(
         "paymentTotal"
     ).value =
-        order.totalAmount.toFixed(2);
+        order.totalAmount
+            .toFixed(2);
 
 }
 
 
 
-/* =====================================================
-   TOTAL PAID FOR ORDER
-===================================================== */
+/* =========================================================
+   GET TOTAL PAID
+========================================================= */
 
 function getTotalPaidForOrder(
     orderID
@@ -3018,7 +3451,8 @@ function getTotalPaidForOrder(
 
         .filter(
             payment =>
-                payment.orderID === orderID
+                payment.orderID ===
+                orderID
         )
 
         .reduce(
@@ -3026,12 +3460,26 @@ function getTotalPaidForOrder(
             (
                 total,
                 payment
-            ) =>
+            ) => {
 
-                total +
-                Number(
-                    payment.amountApplied
-                ),
+                /*
+                    IMPORTANT:
+
+                    We use amountApplied,
+                    NOT amountGiven.
+
+                    This prevents change from
+                    being counted as extra payment.
+                */
+
+                return (
+                    total +
+                    Number(
+                        payment.amountApplied
+                    )
+                );
+
+            },
 
             0
 
@@ -3041,9 +3489,9 @@ function getTotalPaidForOrder(
 
 
 
-/* =====================================================
+/* =========================================================
    RECORD PAYMENT
-===================================================== */
+========================================================= */
 
 function recordPayment() {
 
@@ -3076,7 +3524,8 @@ function recordPayment() {
     const order =
         orders.find(
             order =>
-                order.id === orderID
+                order.id ===
+                orderID
         );
 
 
@@ -3091,7 +3540,9 @@ function recordPayment() {
     }
 
 
-    if (amountGiven <= 0) {
+    if (
+        amountGiven <= 0
+    ) {
 
         alert(
             "Payment amount must be greater than 0."
@@ -3110,9 +3561,12 @@ function recordPayment() {
 
     const remainingBalance =
         Math.max(
+
             0,
+
             order.totalAmount -
             alreadyPaid
+
         );
 
 
@@ -3120,9 +3574,11 @@ function recordPayment() {
         Example:
 
         Order = ₱100
+
         Customer gives = ₱500
 
         Amount Applied = ₱100
+
         Change = ₱400
     */
 
@@ -3135,19 +3591,19 @@ function recordPayment() {
 
     const change =
         Math.max(
+
             0,
+
             amountGiven -
             remainingBalance
+
         );
 
 
     const payment = {
 
         id:
-            "PAY-" +
-            String(
-                Date.now()
-            ).slice(-6),
+            generatePaymentID(),
 
         orderID,
 
@@ -3165,12 +3621,16 @@ function recordPayment() {
         type,
 
         date:
-            new Date().toLocaleString()
+            new Date()
+                .toLocaleString()
 
     };
 
 
-    payments.push(payment);
+    payments.push(
+        payment
+    );
+
 
     saveData();
 
@@ -3187,28 +3647,43 @@ function recordPayment() {
         <div class="success">
 
             <strong>
-                Payment recorded successfully!
+                Payment recorded successfully.
             </strong>
 
             <br><br>
 
             Amount Given:
+
             <strong>
-                ${formatMoney(amountGiven)}
+
+                ${formatMoney(
+                    amountGiven
+                )}
+
             </strong>
 
             <br>
 
             Applied to Order:
+
             <strong>
-                ${formatMoney(amountApplied)}
+
+                ${formatMoney(
+                    amountApplied
+                )}
+
             </strong>
 
             <br>
 
             Change:
+
             <strong>
-                ${formatMoney(change)}
+
+                ${formatMoney(
+                    change
+                )}
+
             </strong>
 
         </div>
@@ -3226,17 +3701,23 @@ function recordPayment() {
         "Payment recorded!\n\n" +
 
         "Amount Given: " +
-        formatMoney(amountGiven) +
+        formatMoney(
+            amountGiven
+        ) +
 
         "\n" +
 
         "Applied: " +
-        formatMoney(amountApplied) +
+        formatMoney(
+            amountApplied
+        ) +
 
         "\n" +
 
         "Change: " +
-        formatMoney(change)
+        formatMoney(
+            change
+        )
 
     );
 
@@ -3244,9 +3725,9 @@ function recordPayment() {
 
 
 
-/* =====================================================
-   PAYMENT LOG
-===================================================== */
+/* =========================================================
+   PAYMENT TABLE
+========================================================= */
 
 function renderPayments() {
 
@@ -3256,12 +3737,16 @@ function renderPayments() {
         );
 
 
-    if (payments.length === 0) {
+    if (
+        payments.length === 0
+    ) {
 
         container.innerHTML = `
 
             <div class="empty">
+
                 No transactions recorded yet.
+
             </div>
 
         `;
@@ -3279,23 +3764,41 @@ function renderPayments() {
 
                 <tr>
 
-                    <th>Payment ID</th>
+                    <th>
+                        Payment ID
+                    </th>
 
-                    <th>Order</th>
+                    <th>
+                        Order
+                    </th>
 
-                    <th>Customer</th>
+                    <th>
+                        Customer
+                    </th>
 
-                    <th>Amount Given</th>
+                    <th>
+                        Amount Given
+                    </th>
 
-                    <th>Applied</th>
+                    <th>
+                        Applied
+                    </th>
 
-                    <th>Change</th>
+                    <th>
+                        Change
+                    </th>
 
-                    <th>Method</th>
+                    <th>
+                        Method
+                    </th>
 
-                    <th>Type</th>
+                    <th>
+                        Type
+                    </th>
 
-                    <th>Date</th>
+                    <th>
+                        Date
+                    </th>
 
                 </tr>
 
@@ -3305,92 +3808,111 @@ function renderPayments() {
             <tbody>
 
 
-                ${payments.map(payment => `
+                ${payments.map(
+                    payment => `
 
-                    <tr>
+                        <tr>
 
-                        <td>
-                            ${payment.id}
-                        </td>
+                            <td>
 
+                                ${payment.id}
 
-                        <td>
-                            ${payment.orderID}
-                        </td>
+                            </td>
 
 
-                        <td>
-                            ${payment.customerName}
-                        </td>
+                            <td>
+
+                                ${payment.orderID}
+
+                            </td>
 
 
-                        <td>
+                            <td>
 
-                            <strong>
-                                ${formatMoney(
-                                    payment.amountGiven
-                                )}
-                            </strong>
+                                ${payment.customerName}
 
-                        </td>
+                            </td>
 
 
-                        <td>
+                            <td>
 
-                            ${formatMoney(
-                                payment.amountApplied
-                            )}
-
-                        </td>
-
-
-                        <td>
-
-                            ${
-                                payment.change > 0
-
-                                ?
-
-                                `<span class="badge yellow">
+                                <strong>
 
                                     ${formatMoney(
-                                        payment.change
+                                        payment.amountGiven
                                     )}
 
-                                </span>`
+                                </strong>
 
-                                :
-
-                                formatMoney(0)
-
-                            }
-
-                        </td>
+                            </td>
 
 
-                        <td>
-                            ${payment.method}
-                        </td>
+                            <td>
+
+                                ${formatMoney(
+                                    payment.amountApplied
+                                )}
+
+                            </td>
 
 
-                        <td>
+                            <td>
 
-                            <span class="badge blue">
+                                ${
+                                    payment.change > 0
 
-                                ${payment.type}
+                                    ?
 
-                            </span>
+                                    `
+                                        <span
+                                            class="badge yellow"
+                                        >
 
-                        </td>
+                                            ${formatMoney(
+                                                payment.change
+                                            )}
+
+                                        </span>
+                                    `
+
+                                    :
+
+                                    formatMoney(0)
+                                }
+
+                            </td>
 
 
-                        <td>
-                            ${payment.date}
-                        </td>
+                            <td>
 
-                    </tr>
+                                ${payment.method}
 
-                `).join("")}
+                            </td>
+
+
+                            <td>
+
+                                <span
+                                    class="badge blue"
+                                >
+
+                                    ${payment.type}
+
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                ${payment.date}
+
+                            </td>
+
+                        </tr>
+
+                    `
+                ).join("")}
 
 
             </tbody>
@@ -3403,9 +3925,9 @@ function renderPayments() {
 
 
 
-/* =====================================================
+/* =========================================================
    PAYMENT SUMMARY
-===================================================== */
+========================================================= */
 
 function updatePaymentSummary() {
 
@@ -3415,12 +3937,16 @@ function updatePaymentSummary() {
             (
                 sum,
                 order
-            ) =>
+            ) => {
 
-                sum +
-                Number(
-                    order.totalAmount
-                ),
+                return (
+                    sum +
+                    Number(
+                        order.totalAmount
+                    )
+                );
+
+            },
 
             0
 
@@ -3433,12 +3959,16 @@ function updatePaymentSummary() {
             (
                 sum,
                 payment
-            ) =>
+            ) => {
 
-                sum +
-                Number(
-                    payment.amountApplied
-                ),
+                return (
+                    sum +
+                    Number(
+                        payment.amountApplied
+                    )
+                );
+
+            },
 
             0
 
@@ -3447,9 +3977,12 @@ function updatePaymentSummary() {
 
     const totalBalance =
         Math.max(
+
             0,
+
             totalSales -
             totalPaid
+
         );
 
 
@@ -3480,10 +4013,9 @@ function updatePaymentSummary() {
 
 
 
-/* =====================================================
-   MODULE 9
+/* =========================================================
    INVENTORY
-===================================================== */
+========================================================= */
 
 function addInventoryItem() {
 
@@ -3551,13 +4083,24 @@ function addInventoryItem() {
     }
 
 
+    if (
+        shopStock < 0 ||
+        homeStock < 0
+    ) {
+
+        alert(
+            "Stock cannot be negative."
+        );
+
+        return;
+
+    }
+
+
     const item = {
 
         id:
-            "INV-" +
-            String(
-                Date.now()
-            ).slice(-6),
+            generateInventoryID(),
 
         name,
 
@@ -3574,7 +4117,10 @@ function addInventoryItem() {
     };
 
 
-    inventory.push(item);
+    inventory.push(
+        item
+    );
+
 
     saveData();
 
@@ -3618,9 +4164,9 @@ function addInventoryItem() {
 
 
 
-/* =====================================================
-   INVENTORY DISPLAY
-===================================================== */
+/* =========================================================
+   INVENTORY TABLE
+========================================================= */
 
 function renderInventory() {
 
@@ -3630,7 +4176,9 @@ function renderInventory() {
         );
 
 
-    if (inventory.length === 0) {
+    if (
+        inventory.length === 0
+    ) {
 
         container.innerHTML = `
 
@@ -3655,23 +4203,41 @@ function renderInventory() {
 
                 <tr>
 
-                    <th>Item</th>
+                    <th>
+                        Item
+                    </th>
 
-                    <th>Category</th>
+                    <th>
+                        Category
+                    </th>
 
-                    <th>Shop</th>
+                    <th>
+                        Shop
+                    </th>
 
-                    <th>Home</th>
+                    <th>
+                        Home
+                    </th>
 
-                    <th>Total</th>
+                    <th>
+                        Total
+                    </th>
 
-                    <th>Reorder Level</th>
+                    <th>
+                        Reorder Level
+                    </th>
 
-                    <th>Status</th>
+                    <th>
+                        Status
+                    </th>
 
-                    <th>Adjust</th>
+                    <th>
+                        Adjust
+                    </th>
 
-                    <th>Delete</th>
+                    <th>
+                        Delete
+                    </th>
 
                 </tr>
 
@@ -3681,188 +4247,212 @@ function renderInventory() {
             <tbody>
 
 
-                ${inventory.map(item => {
+                ${inventory.map(
+                    item => {
 
-                    const total =
-                        Number(
-                            item.shopStock
-                        ) +
-                        Number(
-                            item.homeStock
-                        );
-
-
-                    const lowStock =
-                        item.shopStock <=
-                            item.reorderLevel &&
-
-                        item.homeStock <=
-                            item.reorderLevel;
+                        const total =
+                            Number(
+                                item.shopStock
+                            ) +
+                            Number(
+                                item.homeStock
+                            );
 
 
-                    return `
+                        const lowStock =
+                            item.shopStock <=
+                                item.reorderLevel &&
 
-                        <tr>
-
-
-                            <td>
-
-                                <strong>
-                                    ${item.name}
-                                </strong>
-
-                            </td>
+                            item.homeStock <=
+                                item.reorderLevel;
 
 
-                            <td>
-                                ${item.category}
-                            </td>
+                        return `
+
+                            <tr>
+
+                                <td>
+
+                                    <strong>
+
+                                        ${item.name}
+
+                                    </strong>
+
+                                </td>
 
 
-                            <td>
+                                <td>
 
-                                ${item.shopStock}
-                                ${item.unit}
+                                    ${item.category}
 
-                            </td>
-
-
-                            <td>
-
-                                ${item.homeStock}
-                                ${item.unit}
-
-                            </td>
+                                </td>
 
 
-                            <td>
+                                <td>
 
-                                <strong>
-
-                                    ${total}
+                                    ${item.shopStock}
                                     ${item.unit}
 
-                                </strong>
-
-                            </td>
+                                </td>
 
 
-                            <td>
+                                <td>
 
-                                ${item.reorderLevel}
+                                    ${item.homeStock}
+                                    ${item.unit}
 
-                            </td>
-
-
-                            <td>
-
-                                ${
-                                    lowStock
-
-                                    ?
-
-                                    `<span class="badge red">
-                                        LOW STOCK
-                                    </span>`
-
-                                    :
-
-                                    `<span class="badge green">
-                                        OK
-                                    </span>`
-                                }
-
-                            </td>
+                                </td>
 
 
-                            <td>
+                                <td>
+
+                                    <strong>
+
+                                        ${total}
+                                        ${item.unit}
+
+                                    </strong>
+
+                                </td>
 
 
-                                <button
-                                    class="small"
-                                    onclick="
-                                        adjustStock(
-                                            '${item.id}',
-                                            'shop',
-                                            1
-                                        )
-                                    "
-                                >
-                                    + Shop
-                                </button>
+                                <td>
+
+                                    ${item.reorderLevel}
+
+                                </td>
 
 
-                                <button
-                                    class="small"
-                                    onclick="
-                                        adjustStock(
-                                            '${item.id}',
-                                            'shop',
-                                            -1
-                                        )
-                                    "
-                                >
-                                    - Shop
-                                </button>
+                                <td>
+
+                                    ${
+                                        lowStock
+
+                                        ?
+
+                                        `
+                                            <span
+                                                class="badge red"
+                                            >
+
+                                                LOW STOCK
+
+                                            </span>
+                                        `
+
+                                        :
+
+                                        `
+                                            <span
+                                                class="badge green"
+                                            >
+
+                                                OK
+
+                                            </span>
+                                        `
+                                    }
+
+                                </td>
 
 
-                                <br>
+                                <td>
 
 
-                                <button
-                                    class="small"
-                                    onclick="
-                                        adjustStock(
-                                            '${item.id}',
-                                            'home',
-                                            1
-                                        )
-                                    "
-                                >
-                                    + Home
-                                </button>
+                                    <button
+                                        class="small"
+                                        onclick="
+                                            adjustStock(
+                                                '${item.id}',
+                                                'shop',
+                                                1
+                                            )
+                                        "
+                                    >
+
+                                        + Shop
+
+                                    </button>
 
 
-                                <button
-                                    class="small"
-                                    onclick="
-                                        adjustStock(
-                                            '${item.id}',
-                                            'home',
-                                            -1
-                                        )
-                                    "
-                                >
-                                    - Home
-                                </button>
+                                    <button
+                                        class="small"
+                                        onclick="
+                                            adjustStock(
+                                                '${item.id}',
+                                                'shop',
+                                                -1
+                                            )
+                                        "
+                                    >
+
+                                        - Shop
+
+                                    </button>
 
 
-                            </td>
+                                    <br>
 
 
-                            <td>
+                                    <button
+                                        class="small"
+                                        onclick="
+                                            adjustStock(
+                                                '${item.id}',
+                                                'home',
+                                                1
+                                            )
+                                        "
+                                    >
 
-                                <button
-                                    class="danger"
-                                    onclick="
-                                        deleteInventory(
-                                            '${item.id}'
-                                        )
-                                    "
-                                >
+                                        + Home
 
-                                    Delete
-
-                                </button>
-
-                            </td>
+                                    </button>
 
 
-                        </tr>
+                                    <button
+                                        class="small"
+                                        onclick="
+                                            adjustStock(
+                                                '${item.id}',
+                                                'home',
+                                                -1
+                                            )
+                                        "
+                                    >
 
-                    `;
+                                        - Home
 
-                }).join("")}
+                                    </button>
+
+
+                                </td>
+
+
+                                <td>
+
+                                    <button
+                                        class="danger"
+                                        onclick="
+                                            deleteInventory(
+                                                '${item.id}'
+                                            )
+                                        "
+                                    >
+
+                                        Delete
+
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+                        `;
+
+                    }
+                ).join("")}
 
 
             </tbody>
@@ -3875,9 +4465,9 @@ function renderInventory() {
 
 
 
-/* =====================================================
+/* =========================================================
    ADJUST STOCK
-===================================================== */
+========================================================= */
 
 function adjustStock(
     itemID,
@@ -3888,34 +4478,47 @@ function adjustStock(
     const item =
         inventory.find(
             item =>
-                item.id === itemID
+                item.id ===
+                itemID
         );
 
 
     if (!item) {
+
         return;
+
     }
 
 
-    if (location === "shop") {
+    if (
+        location === "shop"
+    ) {
 
         item.shopStock =
             Math.max(
+
                 0,
+
                 item.shopStock +
                 amount
+
             );
 
     }
 
 
-    if (location === "home") {
+    if (
+        location === "home"
+    ) {
 
         item.homeStock =
             Math.max(
+
                 0,
+
                 item.homeStock +
                 amount
+
             );
 
     }
@@ -3929,11 +4532,13 @@ function adjustStock(
 
 
 
-/* =====================================================
+/* =========================================================
    DELETE INVENTORY
-===================================================== */
+========================================================= */
 
-function deleteInventory(itemID) {
+function deleteInventory(
+    itemID
+) {
 
     if (
         !confirm(
@@ -3949,7 +4554,8 @@ function deleteInventory(itemID) {
     inventory =
         inventory.filter(
             item =>
-                item.id !== itemID
+                item.id !==
+                itemID
         );
 
 
@@ -3961,11 +4567,19 @@ function deleteInventory(itemID) {
 
 
 
-/* =====================================================
+/* =========================================================
    STARTER INVENTORY
-===================================================== */
+========================================================= */
 
 function addStarterInventory() {
+
+    /*
+        Don't overwrite existing
+        inventory.
+
+        This only runs the first
+        time the system is opened.
+    */
 
     if (
         inventory.length > 0
@@ -3982,17 +4596,23 @@ function addStarterInventory() {
 
             id: "INV-001",
 
-            name: "Bond Paper",
+            name:
+                "Bond Paper",
 
-            category: "Bond Paper",
+            category:
+                "Bond Paper",
 
-            unit: "box",
+            unit:
+                "box",
 
-            shopStock: 2,
+            shopStock:
+                2,
 
-            homeStock: 2,
+            homeStock:
+                2,
 
-            reorderLevel: 1
+            reorderLevel:
+                1
 
         },
 
@@ -4001,17 +4621,23 @@ function addStarterInventory() {
 
             id: "INV-002",
 
-            name: "Photo Paper",
+            name:
+                "Photo Paper",
 
-            category: "Photo Paper",
+            category:
+                "Photo Paper",
 
-            unit: "pack",
+            unit:
+                "pack",
 
-            shopStock: 3,
+            shopStock:
+                3,
 
-            homeStock: 1,
+            homeStock:
+                1,
 
-            reorderLevel: 1
+            reorderLevel:
+                1
 
         },
 
@@ -4020,17 +4646,23 @@ function addStarterInventory() {
 
             id: "INV-003",
 
-            name: "Black Ink",
+            name:
+                "Black Ink",
 
-            category: "Ink/Toner",
+            category:
+                "Ink/Toner",
 
-            unit: "bottle",
+            unit:
+                "bottle",
 
-            shopStock: 2,
+            shopStock:
+                2,
 
-            homeStock: 1,
+            homeStock:
+                1,
 
-            reorderLevel: 1
+            reorderLevel:
+                1
 
         }
 
@@ -4043,9 +4675,9 @@ function addStarterInventory() {
 
 
 
-/* =====================================================
-   REFRESH EVERYTHING
-===================================================== */
+/* =========================================================
+   REFRESH
+========================================================= */
 
 function refreshEverything() {
 
@@ -4065,9 +4697,9 @@ function refreshEverything() {
 
 
 
-/* =====================================================
-   INITIALIZE
-===================================================== */
+/* =========================================================
+   START
+========================================================= */
 
 addStarterInventory();
 
