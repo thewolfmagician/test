@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grea San Jave - Printing System</title>
+
+    <title>Grea San Jave Printing Services</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -74,7 +77,7 @@
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         .card h2 {
@@ -108,8 +111,8 @@
             font-size: 14px;
         }
 
-        textarea {
-            resize: vertical;
+        input[readonly] {
+            background: #eeeeee;
         }
 
         button.primary {
@@ -140,6 +143,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin: 2px;
         }
 
         table {
@@ -244,6 +248,15 @@
             margin-top: 10px;
         }
 
+        .info {
+            background: #dbeafe;
+            color: #1e3a8a;
+            border: 1px solid #bfdbfe;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
         .muted {
             color: #777;
             font-size: 13px;
@@ -262,622 +275,1442 @@
         }
 
         @media (max-width: 700px) {
+
             table {
                 display: block;
                 overflow-x: auto;
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <header>
+
     <h1>Grea San Jave Printing Services</h1>
-    <p>Order, Payment & Inventory Prototype</p>
+
+    <p>
+        Order, Payment & Inventory Prototype
+    </p>
+
 </header>
 
+
 <nav>
-    <button class="nav-btn active" onclick="showModule('module3', this)">
+
+    <button
+        class="nav-btn active"
+        onclick="showModule('module3', this)"
+    >
         Module 3 - Order Intake
     </button>
 
-    <button class="nav-btn" onclick="showModule('module7', this)">
+    <button
+        class="nav-btn"
+        onclick="showModule('module7', this)"
+    >
         Module 7 - Payments
     </button>
 
-    <button class="nav-btn" onclick="showModule('module9', this)">
+    <button
+        class="nav-btn"
+        onclick="showModule('module9', this)"
+    >
         Module 9 - Inventory
     </button>
+
 </nav>
+
 
 <main>
 
-    <!-- ========================= -->
-    <!-- MODULE 3 -->
-    <!-- ========================= -->
 
-    <section id="module3" class="module active">
+<!-- =====================================================
+     MODULE 3
+     ORDER INTAKE & FILE SUBMISSION
+===================================================== -->
 
-        <div class="card">
-            <h2>Module 3 - Order Intake & File Submission</h2>
+<section id="module3" class="module active">
 
-            <p class="muted">
-                Staff can manually add files received from Messenger, Gmail,
-                Bluetooth, or in-person customers.
-            </p>
+    <div class="card">
 
-            <br>
+        <h2>
+            Module 3 - Order Intake & File Submission
+        </h2>
 
-            <div class="form-grid">
+        <p class="muted">
 
-                <div>
-                    <label>Customer Name</label>
-                    <input type="text" id="customerName" placeholder="Juan Dela Cruz">
-                </div>
+            Add files received from Messenger, Gmail,
+            Bluetooth, or in-person customers.
 
-                <div>
-                    <label>Contact Number</label>
-                    <input type="text" id="customerContact" placeholder="09XXXXXXXXX">
-                </div>
+        </p>
 
-                <div>
-                    <label>Submission Channel</label>
-                    <select id="submissionChannel">
-                        <option value="Messenger">Messenger</option>
-                        <option value="Email">Email / Gmail</option>
-                        <option value="In Person">In Person</option>
-                        <option value="Bluetooth">Bluetooth</option>
-                    </select>
-                </div>
+        <br>
 
-                <div>
-                    <label>Paper Size</label>
-                    <select id="paperSize">
-                        <option value="A4">A4</option>
-                        <option value="Short">Short / Letter</option>
-                        <option value="Long">Long / Legal</option>
-                        <option value="A3">A3</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
 
-                <div>
-                    <label>Copies</label>
-                    <input type="number" id="copies" value="1" min="1">
-                </div>
+        <div class="form-grid">
 
-                <div>
-                    <label>Pages</label>
-                    <input type="number" id="pages" value="1" min="1">
-                </div>
 
-                <div>
-                    <label>Print Type</label>
-                    <select id="printType">
-                        <option value="Black Text">Black Text - ₱3/page</option>
-                        <option value="Minimal Color">Minimal Color - ₱5/page</option>
-                        <option value="Small Image">Small Image - ₱10/page</option>
-                        <option value="Full Color">Full Color - ₱20/page</option>
-                    </select>
-                </div>
+            <div>
 
-                <div>
-                    <label>Large File Threshold</label>
-                    <input type="number" id="largeFileThreshold" value="50" min="1">
-                    <small class="muted">
-                        Example default only - confirm with client later.
-                    </small>
-                </div>
+                <label>
+                    Customer Name
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Juan Dela Cruz"
+                >
 
             </div>
 
-            <h3>Upload Files</h3>
 
-            <input
-                type="file"
-                id="orderFiles"
-                multiple
-                accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-            >
+            <div>
 
-            <div id="fileFeedback"></div>
+                <label>
+                    Contact Number
+                </label>
 
-            <button class="primary" onclick="createOrder()">
-                Create Order
-            </button>
-        </div>
-
-
-        <div class="card">
-
-            <h2>Current Orders</h2>
-
-            <input
-                type="text"
-                id="orderSearch"
-                placeholder="Search by order ID, customer, or file name..."
-                oninput="renderOrders()"
-            >
-
-            <div id="ordersContainer"></div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ========================= -->
-    <!-- MODULE 7 -->
-    <!-- ========================= -->
-
-    <section id="module7" class="module">
-
-        <div class="card">
-
-            <h2>Module 7 - Payment & Transaction Records</h2>
-
-            <div class="form-grid">
-
-                <div>
-                    <label>Select Order</label>
-                    <select id="paymentOrder"></select>
-                </div>
-
-                <div>
-                    <label>Total Order Amount</label>
-                    <input
-                        type="number"
-                        id="paymentTotal"
-                        min="0"
-                        step="0.01"
-                        readonly
-                    >
-                </div>
-
-                <div>
-                    <label>Payment Amount</label>
-                    <input
-                        type="number"
-                        id="paymentAmount"
-                        min="0"
-                        step="0.01"
-                        placeholder="100"
-                    >
-                </div>
-
-                <div>
-                    <label>Payment Method</label>
-                    <select id="paymentMethod">
-                        <option value="Cash">Cash</option>
-                        <option value="GCash">GCash</option>
-                        <option value="Bank Transfer">Bank Transfer</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label>Payment Type</label>
-                    <select id="paymentType">
-                        <option value="Down Payment">Down Payment</option>
-                        <option value="Partial Payment">Partial Payment</option>
-                        <option value="Full Payment">Full Payment</option>
-                    </select>
-                </div>
+                <input
+                    type="text"
+                    id="customerContact"
+                    placeholder="09XXXXXXXXX"
+                >
 
             </div>
 
-            <button class="primary" onclick="recordPayment()">
-                Record Payment
-            </button>
 
-            <div id="paymentMessage"></div>
+            <div>
 
-        </div>
+                <label>
+                    Submission Channel
+                </label>
 
+                <select id="submissionChannel">
 
-        <div class="card">
+                    <option value="Messenger">
+                        Messenger
+                    </option>
 
-            <h2>Payment Summary</h2>
+                    <option value="Email">
+                        Email / Gmail
+                    </option>
 
-            <div class="summary-grid">
+                    <option value="In Person">
+                        In Person
+                    </option>
 
-                <div class="summary-box">
-                    <h3>Total Sales Recorded</h3>
-                    <p id="totalSales">₱0.00</p>
-                </div>
+                    <option value="Bluetooth">
+                        Bluetooth
+                    </option>
 
-                <div class="summary-box">
-                    <h3>Total Paid</h3>
-                    <p id="totalPaid">₱0.00</p>
-                </div>
-
-                <div class="summary-box">
-                    <h3>Outstanding Balance</h3>
-                    <p id="totalBalance">₱0.00</p>
-                </div>
+                </select>
 
             </div>
 
-        </div>
 
+            <div>
 
-        <div class="card">
+                <label>
+                    Paper Size
+                </label>
 
-            <h2>Transaction Records</h2>
+                <select id="paperSize">
 
-            <div id="paymentsContainer"></div>
+                    <option value="A4">
+                        A4
+                    </option>
 
-        </div>
+                    <option value="Short">
+                        Short / Letter
+                    </option>
 
-    </section>
+                    <option value="Long">
+                        Long / Legal
+                    </option>
 
+                    <option value="A3">
+                        A3
+                    </option>
 
-    <!-- ========================= -->
-    <!-- MODULE 9 -->
-    <!-- ========================= -->
+                    <option value="Other">
+                        Other
+                    </option>
 
-    <section id="module9" class="module">
-
-        <div class="card">
-
-            <h2>Module 9 - Inventory Management</h2>
-
-            <div class="form-grid">
-
-                <div>
-                    <label>Item Name</label>
-                    <input type="text" id="inventoryName" placeholder="Bond Paper">
-                </div>
-
-                <div>
-                    <label>Category</label>
-                    <select id="inventoryCategory">
-                        <option value="Bond Paper">Bond Paper</option>
-                        <option value="Photo Paper">Photo Paper</option>
-                        <option value="Specialty Paper">Specialty Paper</option>
-                        <option value="Ink/Toner">Ink/Toner</option>
-                        <option value="Binding Materials">Binding Materials</option>
-                        <option value="Lamination Materials">Lamination Materials</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label>Unit</label>
-                    <input
-                        type="text"
-                        id="inventoryUnit"
-                        placeholder="box / bottle / pack"
-                    >
-                </div>
-
-                <div>
-                    <label>Shop Stock</label>
-                    <input type="number" id="shopStock" min="0" value="0">
-                </div>
-
-                <div>
-                    <label>Home Stock</label>
-                    <input type="number" id="homeStock" min="0" value="0">
-                </div>
-
-                <div>
-                    <label>Reorder Level</label>
-                    <input type="number" id="reorderLevel" min="0" value="1">
-                </div>
+                </select>
 
             </div>
 
-            <p class="muted">
-                Default reorder level is 1. This is configurable because the
-                exact rules still need confirmation from the client.
-            </p>
 
-            <button class="primary" onclick="addInventoryItem()">
-                Add Inventory Item
-            </button>
+            <div>
 
-            <div id="inventoryMessage"></div>
+                <label>
+                    Copies
+                </label>
+
+                <input
+                    type="number"
+                    id="copies"
+                    value="1"
+                    min="1"
+                    oninput="updatePricePreview()"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Pages
+                </label>
+
+                <input
+                    type="number"
+                    id="pages"
+                    value="1"
+                    min="1"
+                    oninput="updatePricePreview()"
+                >
+
+                <small class="muted">
+
+                    This automatically updates when you
+                    upload image files.
+
+                </small>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Print Type
+                </label>
+
+                <select
+                    id="printType"
+                    onchange="updatePricePreview()"
+                >
+
+                    <option value="Black Text">
+                        Black Text - ₱3/page
+                    </option>
+
+                    <option value="Minimal Color">
+                        Minimal Color - ₱5/page
+                    </option>
+
+                    <option value="Small Image">
+                        Small Image - ₱10/page
+                    </option>
+
+                    <option value="Full Color">
+                        Full Color - ₱20/page
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Large File Threshold (MB)
+                </label>
+
+                <input
+                    type="number"
+                    id="largeFileThreshold"
+                    value="50"
+                    min="1"
+                >
+
+                <small class="muted">
+                    Temporary default. Client still needs to confirm.
+                </small>
+
+            </div>
+
 
         </div>
 
 
-        <div class="card">
+        <h3>
+            Upload Files
+        </h3>
 
-            <h2>Inventory Overview</h2>
 
-            <div id="inventoryContainer"></div>
+        <input
+            type="file"
+            id="orderFiles"
+            multiple
+            accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+            onchange="handleFileSelection()"
+        >
+
+
+        <div id="fileFeedback"></div>
+
+
+        <div
+            id="pricePreview"
+            class="info"
+        >
+
+            Estimated Price:
+            <strong>₱3.00</strong>
 
         </div>
 
-    </section>
+
+        <button
+            class="primary"
+            onclick="createOrder()"
+        >
+
+            Create Order
+
+        </button>
+
+    </div>
+
+
+
+    <div class="card">
+
+        <h2>
+            Current Orders
+        </h2>
+
+
+        <input
+            type="text"
+            id="orderSearch"
+            placeholder="Search by order ID, customer, or file name..."
+            oninput="renderOrders()"
+        >
+
+
+        <div id="ordersContainer"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MODULE 7
+     PAYMENT & TRANSACTION RECORDS
+===================================================== -->
+
+<section id="module7" class="module">
+
+
+    <div class="card">
+
+        <h2>
+            Module 7 - Payment & Transaction Records
+        </h2>
+
+
+        <div class="form-grid">
+
+
+            <div>
+
+                <label>
+                    Select Order
+                </label>
+
+                <select id="paymentOrder"></select>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Order Total
+                </label>
+
+                <input
+                    type="number"
+                    id="paymentTotal"
+                    readonly
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Amount Given
+                </label>
+
+                <input
+                    type="number"
+                    id="paymentAmount"
+                    min="0"
+                    step="0.01"
+                    placeholder="500"
+                >
+
+                <small class="muted">
+
+                    Example: Order is ₱100,
+                    customer gives ₱500.
+
+                </small>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Payment Method
+                </label>
+
+                <select id="paymentMethod">
+
+                    <option value="Cash">
+                        Cash
+                    </option>
+
+                    <option value="GCash">
+                        GCash
+                    </option>
+
+                    <option value="Bank Transfer">
+                        Bank Transfer
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Payment Type
+                </label>
+
+                <select id="paymentType">
+
+                    <option value="Down Payment">
+                        Down Payment
+                    </option>
+
+                    <option value="Partial Payment">
+                        Partial Payment
+                    </option>
+
+                    <option value="Full Payment">
+                        Full Payment
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="primary"
+            onclick="recordPayment()"
+        >
+
+            Record Payment
+
+        </button>
+
+
+        <div id="paymentMessage"></div>
+
+    </div>
+
+
+
+    <div class="card">
+
+        <h2>
+            Payment Summary
+        </h2>
+
+
+        <div class="summary-grid">
+
+
+            <div class="summary-box">
+
+                <h3>
+                    Total Sales Recorded
+                </h3>
+
+                <p id="totalSales">
+                    ₱0.00
+                </p>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <h3>
+                    Total Paid
+                </h3>
+
+                <p id="totalPaid">
+                    ₱0.00
+                </p>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <h3>
+                    Outstanding Balance
+                </h3>
+
+                <p id="totalBalance">
+                    ₱0.00
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <div class="card">
+
+        <h2>
+            Transaction Records
+        </h2>
+
+        <div id="paymentsContainer"></div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     MODULE 9
+     INVENTORY
+===================================================== -->
+
+<section id="module9" class="module">
+
+
+    <div class="card">
+
+        <h2>
+            Module 9 - Inventory Management
+        </h2>
+
+
+        <div class="form-grid">
+
+
+            <div>
+
+                <label>
+                    Item Name
+                </label>
+
+                <input
+                    type="text"
+                    id="inventoryName"
+                    placeholder="Bond Paper"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Category
+                </label>
+
+                <select id="inventoryCategory">
+
+                    <option value="Bond Paper">
+                        Bond Paper
+                    </option>
+
+                    <option value="Photo Paper">
+                        Photo Paper
+                    </option>
+
+                    <option value="Specialty Paper">
+                        Specialty Paper
+                    </option>
+
+                    <option value="Ink/Toner">
+                        Ink/Toner
+                    </option>
+
+                    <option value="Binding Materials">
+                        Binding Materials
+                    </option>
+
+                    <option value="Lamination Materials">
+                        Lamination Materials
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Unit
+                </label>
+
+                <input
+                    type="text"
+                    id="inventoryUnit"
+                    placeholder="box / bottle / pack"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Shop Stock
+                </label>
+
+                <input
+                    type="number"
+                    id="shopStock"
+                    min="0"
+                    value="0"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Home Stock
+                </label>
+
+                <input
+                    type="number"
+                    id="homeStock"
+                    min="0"
+                    value="0"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Reorder Level
+                </label>
+
+                <input
+                    type="number"
+                    id="reorderLevel"
+                    min="0"
+                    value="1"
+                >
+
+            </div>
+
+
+        </div>
+
+
+        <p class="muted">
+
+            Reorder level is currently set to 1.
+            This can be changed once the client confirms
+            their preferred rule.
+
+        </p>
+
+
+        <button
+            class="primary"
+            onclick="addInventoryItem()"
+        >
+
+            Add Inventory Item
+
+        </button>
+
+
+        <div id="inventoryMessage"></div>
+
+    </div>
+
+
+
+    <div class="card">
+
+        <h2>
+            Inventory Overview
+        </h2>
+
+        <div id="inventoryContainer"></div>
+
+    </div>
+
+
+</section>
+
 
 </main>
 
+
 <footer>
-    Grea San Jave Printing Services - System Prototype
+
+    Grea San Jave Printing Services
+    - System Prototype
+
 </footer>
+
 
 
 <script>
 
-    /* =====================================================
-       BASIC SETTINGS
-    ===================================================== */
 
-    // These are based on the interview answers.
-    // They can easily be changed later when the client confirms them.
+/* =====================================================
+   PRICE SETTINGS
+===================================================== */
 
-    const PRICE_PER_PAGE = {
-        "Black Text": 3,
-        "Minimal Color": 5,
-        "Small Image": 10,
-        "Full Color": 20
-    };
+const PRICE_PER_PAGE = {
+
+    "Black Text": 3,
+
+    "Minimal Color": 5,
+
+    "Small Image": 10,
+
+    "Full Color": 20
+
+};
+
+
+
+/* =====================================================
+   DATA
+===================================================== */
+
+let orders =
+    JSON.parse(
+        localStorage.getItem("gsj_orders")
+    ) || [];
+
+
+let payments =
+    JSON.parse(
+        localStorage.getItem("gsj_payments")
+    ) || [];
+
+
+let inventory =
+    JSON.parse(
+        localStorage.getItem("gsj_inventory")
+    ) || [];
+
+
+
+/* =====================================================
+   SAVE DATA
+===================================================== */
+
+function saveData() {
+
+    localStorage.setItem(
+        "gsj_orders",
+        JSON.stringify(orders)
+    );
+
+    localStorage.setItem(
+        "gsj_payments",
+        JSON.stringify(payments)
+    );
+
+    localStorage.setItem(
+        "gsj_inventory",
+        JSON.stringify(inventory)
+    );
+
+}
+
+
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function generateOrderID() {
+
+    return "ORD-" +
+        String(Date.now()).slice(-6);
+
+}
+
+
+function formatMoney(amount) {
+
+    return "₱" +
+        Number(amount).toLocaleString(
+            "en-PH",
+            {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }
+        );
+
+}
+
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function showModule(moduleID, button) {
+
+    document
+        .querySelectorAll(".module")
+        .forEach(module => {
+
+            module.classList.remove("active");
+
+        });
+
+
+    document
+        .querySelectorAll(".nav-btn")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    document
+        .getElementById(moduleID)
+        .classList.add("active");
+
+
+    if (button) {
+
+        button.classList.add("active");
+
+    }
+
+
+    refreshEverything();
+
+}
+
+
+
+/* =====================================================
+   FILE SELECTION
+===================================================== */
+
+function handleFileSelection() {
+
+    const fileInput =
+        document.getElementById("orderFiles");
+
+
+    const files =
+        Array.from(fileInput.files);
 
 
     /*
-        The client said:
-        - black text = 3
-        - minimal color = 5
-        - small image = 10
-        - full color / no white space = 20
+        IMPORTANT:
+
+        If the customer uploads individual images,
+        every image is treated as one printable page.
+
+        Example:
+
+        6 images
+        ×
+        1 copy
+        ×
+        ₱3
+        =
+        ₱18
+
+        For PDFs, we cannot accurately know the
+        number of pages using this simple browser
+        prototype, so the Pages field can still
+        be manually adjusted.
     */
 
-    let orders = JSON.parse(localStorage.getItem("gsj_orders")) || [];
-    let payments = JSON.parse(localStorage.getItem("gsj_payments")) || [];
-    let inventory = JSON.parse(localStorage.getItem("gsj_inventory")) || [];
+    const imageFiles =
+        files.filter(file => {
 
-
-    /* =====================================================
-       HELPER FUNCTIONS
-    ===================================================== */
-
-    function saveData() {
-        localStorage.setItem("gsj_orders", JSON.stringify(orders));
-        localStorage.setItem("gsj_payments", JSON.stringify(payments));
-        localStorage.setItem("gsj_inventory", JSON.stringify(inventory));
-    }
-
-
-    function generateOrderID() {
-        return "ORD-" + String(Date.now()).slice(-6);
-    }
-
-
-    function formatMoney(amount) {
-        return "₱" + Number(amount).toLocaleString("en-PH", {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        });
-    }
-
-
-    function showModule(moduleID, button) {
-
-        document.querySelectorAll(".module").forEach(module => {
-            module.classList.remove("active");
-        });
-
-        document.querySelectorAll(".nav-btn").forEach(btn => {
-            btn.classList.remove("active");
-        });
-
-        document.getElementById(moduleID).classList.add("active");
-
-        if (button) {
-            button.classList.add("active");
-        }
-
-        refreshEverything();
-    }
-
-
-    /* =====================================================
-       MODULE 3
-       ORDER INTAKE & FILE SUBMISSION
-    ===================================================== */
-
-    function createOrder() {
-
-        const customerName =
-            document.getElementById("customerName").value.trim();
-
-        const customerContact =
-            document.getElementById("customerContact").value.trim();
-
-        const submissionChannel =
-            document.getElementById("submissionChannel").value;
-
-        const paperSize =
-            document.getElementById("paperSize").value;
-
-        const pages =
-            Number(document.getElementById("pages").value);
-
-        const copies =
-            Number(document.getElementById("copies").value);
-
-        const printType =
-            document.getElementById("printType").value;
-
-        const files =
-            Array.from(document.getElementById("orderFiles").files);
-
-        const largeFileThreshold =
-            Number(document.getElementById("largeFileThreshold").value);
-
-
-        if (!customerName) {
-            alert("Please enter the customer's name.");
-            return;
-        }
-
-        if (pages <= 0 || copies <= 0) {
-            alert("Pages and copies must be at least 1.");
-            return;
-        }
-
-        if (files.length === 0) {
-            alert("Please upload at least one file.");
-            return;
-        }
-
-
-        let largeFiles = [];
-
-        files.forEach(file => {
-
-            const sizeMB = file.size / (1024 * 1024);
-
-            if (sizeMB >= largeFileThreshold) {
-                largeFiles.push({
-                    name: file.name,
-                    size: sizeMB.toFixed(2) + " MB"
-                });
-            }
+            return [
+                "image/jpeg",
+                "image/jpg",
+                "image/png"
+            ].includes(file.type);
 
         });
 
+
+    if (imageFiles.length > 0) {
 
         /*
-            Price calculation is intentionally simple.
-            This matches the interview for the prototype:
-            pages × copies × price tier.
+            If every uploaded file is an image,
+            automatically use the file count as pages.
         */
 
-        const pricePerPage = PRICE_PER_PAGE[printType];
+        if (imageFiles.length === files.length) {
 
-        const totalAmount =
-            pages *
-            copies *
-            pricePerPage;
+            document.getElementById("pages").value =
+                imageFiles.length;
+
+        }
+
+    }
 
 
-        const order = {
+    updateFileFeedback(files);
 
-            id: generateOrderID(),
+    updatePricePreview();
 
-            customerName,
-            customerContact,
+}
 
-            submissionChannel,
 
-            paperSize,
 
-            pages,
-            copies,
+/* =====================================================
+   FILE FEEDBACK
+===================================================== */
 
-            printType,
-            pricePerPage,
+function updateFileFeedback(files) {
 
-            totalAmount,
+    const feedback =
+        document.getElementById("fileFeedback");
 
-            status: "Pending",
 
-            largeFileApproval:
-                largeFiles.length > 0 ? "REQUIRED" : "Not Required",
+    if (files.length === 0) {
 
-            largeFiles,
+        feedback.innerHTML = "";
 
-            files: files.map(file => ({
+        return;
+    }
 
-                name: file.name,
-                size: file.size,
-                sizeMB: (file.size / (1024 * 1024)).toFixed(2)
+
+    const threshold =
+        Number(
+            document.getElementById(
+                "largeFileThreshold"
+            ).value
+        );
+
+
+    const largeFiles =
+        files.filter(file => {
+
+            return (
+                file.size /
+                (1024 * 1024)
+            ) >= threshold;
+
+        });
+
+
+    let html = `
+
+        <div class="success">
+
+            ${files.length}
+            file(s) selected.
+
+        </div>
+
+    `;
+
+
+    if (largeFiles.length > 0) {
+
+        html += `
+
+            <div class="warning">
+
+                <strong>
+                    Large file detected.
+                </strong>
+
+                <br>
+
+                Customer approval is required.
+
+                <ul class="file-list">
+
+                    ${largeFiles.map(file => `
+
+                        <li>
+
+                            ${file.name}
+                            -
+                            ${(
+                                file.size /
+                                (1024 * 1024)
+                            ).toFixed(2)}
+                            MB
+
+                        </li>
+
+                    `).join("")}
+
+                </ul>
+
+            </div>
+
+        `;
+
+    }
+
+
+    feedback.innerHTML = html;
+
+}
+
+
+
+/* =====================================================
+   PRICE PREVIEW
+===================================================== */
+
+function updatePricePreview() {
+
+    const pages =
+        Number(
+            document.getElementById("pages").value
+        ) || 0;
+
+
+    const copies =
+        Number(
+            document.getElementById("copies").value
+        ) || 0;
+
+
+    const printType =
+        document.getElementById("printType").value;
+
+
+    const price =
+        PRICE_PER_PAGE[printType];
+
+
+    const total =
+        pages *
+        copies *
+        price;
+
+
+    document.getElementById("pricePreview").innerHTML = `
+
+        Estimated Price:
+
+        <strong>
+            ${formatMoney(total)}
+        </strong>
+
+        <br>
+
+        <small>
+
+            ${pages} page(s)
+            ×
+            ${copies} copy/copies
+            ×
+            ₱${price}/page
+
+        </small>
+
+    `;
+
+}
+
+
+
+/* =====================================================
+   CREATE ORDER
+===================================================== */
+
+function createOrder() {
+
+    const customerName =
+        document
+            .getElementById("customerName")
+            .value
+            .trim();
+
+
+    const customerContact =
+        document
+            .getElementById("customerContact")
+            .value
+            .trim();
+
+
+    const submissionChannel =
+        document
+            .getElementById("submissionChannel")
+            .value;
+
+
+    const paperSize =
+        document
+            .getElementById("paperSize")
+            .value;
+
+
+    const pages =
+        Number(
+            document
+                .getElementById("pages")
+                .value
+        );
+
+
+    const copies =
+        Number(
+            document
+                .getElementById("copies")
+                .value
+        );
+
+
+    const printType =
+        document
+            .getElementById("printType")
+            .value;
+
+
+    const files =
+        Array.from(
+            document
+                .getElementById("orderFiles")
+                .files
+        );
+
+
+    const largeFileThreshold =
+        Number(
+            document
+                .getElementById("largeFileThreshold")
+                .value
+        );
+
+
+    if (!customerName) {
+
+        alert(
+            "Please enter the customer's name."
+        );
+
+        return;
+    }
+
+
+    if (pages <= 0) {
+
+        alert(
+            "Pages must be at least 1."
+        );
+
+        return;
+    }
+
+
+    if (copies <= 0) {
+
+        alert(
+            "Copies must be at least 1."
+        );
+
+        return;
+    }
+
+
+    if (files.length === 0) {
+
+        alert(
+            "Please upload at least one file."
+        );
+
+        return;
+    }
+
+
+    const largeFiles =
+        files.filter(file => {
+
+            return (
+                file.size /
+                (1024 * 1024)
+            ) >= largeFileThreshold;
+
+        });
+
+
+    const pricePerPage =
+        PRICE_PER_PAGE[printType];
+
+
+    const totalAmount =
+        pages *
+        copies *
+        pricePerPage;
+
+
+    const order = {
+
+        id:
+            generateOrderID(),
+
+        customerName,
+
+        customerContact,
+
+        submissionChannel,
+
+        paperSize,
+
+        pages,
+
+        copies,
+
+        printType,
+
+        pricePerPage,
+
+        totalAmount,
+
+        status:
+            "Pending",
+
+        largeFileApproval:
+            largeFiles.length > 0
+                ? "REQUIRED"
+                : "Not Required",
+
+        largeFiles,
+
+        files:
+            files.map(file => ({
+
+                name:
+                    file.name,
+
+                size:
+                    file.size,
+
+                sizeMB:
+                    (
+                        file.size /
+                        (1024 * 1024)
+                    ).toFixed(2)
 
             })),
 
-            createdAt: new Date().toLocaleString()
+        createdAt:
+            new Date().toLocaleString()
 
-        };
+    };
 
 
-        orders.push(order);
+    orders.push(order);
 
-        saveData();
+    saveData();
 
-        displayFileFeedback(order);
 
-        document.getElementById("customerName").value = "";
-        document.getElementById("customerContact").value = "";
+    displayFileFeedback(order);
 
-        document.getElementById("pages").value = 1;
-        document.getElementById("copies").value = 1;
 
-        document.getElementById("orderFiles").value = "";
+    document.getElementById(
+        "customerName"
+    ).value = "";
 
-        renderOrders();
 
-        updatePaymentOrders();
+    document.getElementById(
+        "customerContact"
+    ).value = "";
 
-        alert(
-            "Order " +
-            order.id +
-            " created successfully.\n\n" +
-            "Total: " +
-            formatMoney(totalAmount)
+
+    document.getElementById(
+        "pages"
+    ).value = 1;
+
+
+    document.getElementById(
+        "copies"
+    ).value = 1;
+
+
+    document.getElementById(
+        "orderFiles"
+    ).value = "";
+
+
+    updatePricePreview();
+
+    renderOrders();
+
+    updatePaymentOrders();
+
+
+    alert(
+
+        "Order " +
+        order.id +
+        " created successfully.\n\n" +
+
+        "Files: " +
+        order.files.length +
+        "\n" +
+
+        "Pages: " +
+        order.pages +
+        "\n" +
+
+        "Copies: " +
+        order.copies +
+        "\n\n" +
+
+        "Total: " +
+        formatMoney(order.totalAmount)
+
+    );
+
+}
+
+
+
+/* =====================================================
+   FILE FEEDBACK AFTER ORDER
+===================================================== */
+
+function displayFileFeedback(order) {
+
+    const box =
+        document.getElementById(
+            "fileFeedback"
         );
+
+
+    if (order.largeFiles.length > 0) {
+
+        box.innerHTML = `
+
+            <div class="warning">
+
+                <strong>
+                    Large file detected.
+                </strong>
+
+                <br>
+
+                Customer approval is required.
+
+            </div>
+
+        `;
+
+    } else {
+
+        box.innerHTML = `
+
+            <div class="success">
+
+                Files passed the basic file check.
+
+            </div>
+
+        `;
+
     }
 
-
-    function displayFileFeedback(order) {
-
-        const box = document.getElementById("fileFeedback");
-
-        if (order.largeFiles.length > 0) {
-
-            box.innerHTML = `
-                <div class="warning">
-                    <strong>Large file detected.</strong><br>
-                    Customer approval is required before proceeding.
-
-                    <ul class="file-list">
-                        ${order.largeFiles.map(file => `
-                            <li>
-                                ${file.name} - ${file.size}
-                            </li>
-                        `).join("")}
-                    </ul>
-                </div>
-            `;
-
-        } else {
-
-            box.innerHTML = `
-                <div class="success">
-                    Files passed the basic file check.
-                </div>
-            `;
-
-        }
-    }
+}
 
 
-    function renderOrders() {
 
-        const container =
-            document.getElementById("ordersContainer");
+/* =====================================================
+   DISPLAY ORDERS
+===================================================== */
 
-        const search =
-            document.getElementById("orderSearch")
-                .value
-                .toLowerCase();
+function renderOrders() {
+
+    const container =
+        document.getElementById(
+            "ordersContainer"
+        );
 
 
-        const filteredOrders = orders.filter(order => {
+    const search =
+        document
+            .getElementById("orderSearch")
+            .value
+            .toLowerCase();
+
+
+    const filteredOrders =
+        orders.filter(order => {
 
             const fileNames =
                 order.files
                     .map(file => file.name)
                     .join(" ");
 
+
             return (
 
-                order.id.toLowerCase().includes(search) ||
+                order.id
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
 
                 order.customerName
                     .toLowerCase()
-                    .includes(search) ||
+                    .includes(search)
+
+                ||
 
                 fileNames
                     .toLowerCase()
@@ -888,353 +1721,588 @@
         });
 
 
-        if (filteredOrders.length === 0) {
-
-            container.innerHTML =
-                `<div class="empty">No orders found.</div>`;
-
-            return;
-        }
-
+    if (
+        filteredOrders.length === 0
+    ) {
 
         container.innerHTML = `
 
-            <table>
+            <div class="empty">
+                No orders found.
+            </div>
 
-                <thead>
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = `
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Order ID</th>
+
+                    <th>Customer</th>
+
+                    <th>Channel</th>
+
+                    <th>Files</th>
+
+                    <th>Print Details</th>
+
+                    <th>Total</th>
+
+                    <th>Status</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                ${filteredOrders.map(order => `
 
                     <tr>
-                        <th>Order ID</th>
-                        <th>Customer</th>
-                        <th>Channel</th>
-                        <th>Files</th>
-                        <th>Print Details</th>
-                        <th>Total</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
 
-                </thead>
+                        <td>
 
-                <tbody>
+                            <strong>
+                                ${order.id}
+                            </strong>
 
-                    ${filteredOrders.map(order => `
+                            <br>
 
-                        <tr>
+                            <span class="muted">
+                                ${order.createdAt}
+                            </span>
 
-                            <td>
-                                <strong>${order.id}</strong>
-                                <br>
-                                <span class="muted">
-                                    ${order.createdAt}
-                                </span>
-                            </td>
+                        </td>
 
-                            <td>
-                                ${order.customerName}
-                                <br>
-                                <span class="muted">
-                                    ${order.customerContact || "No contact"}
-                                </span>
-                            </td>
 
-                            <td>
-                                ${order.submissionChannel}
-                            </td>
+                        <td>
 
-                            <td>
-                                ${order.files.length} file(s)
+                            ${order.customerName}
 
-                                <ul class="file-list">
-                                    ${order.files.map(file => `
-                                        <li>
-                                            ${file.name}
-                                            (${file.sizeMB} MB)
-                                        </li>
-                                    `).join("")}
-                                </ul>
+                            <br>
+
+                            <span class="muted">
 
                                 ${
-                                    order.largeFiles.length > 0
-                                    ?
-                                    `<span class="badge yellow">
-                                        Approval Required
-                                    </span>`
-                                    :
-                                    ""
+                                    order.customerContact ||
+                                    "No contact"
                                 }
 
-                            </td>
+                            </span>
 
-                            <td>
-                                ${order.pages} page(s)<br>
-                                ${order.copies} copy/copies<br>
-                                ${order.paperSize}<br>
-                                ${order.printType}
-                            </td>
+                        </td>
 
-                            <td>
-                                <strong>
-                                    ${formatMoney(order.totalAmount)}
-                                </strong>
-                            </td>
 
-                            <td>
+                        <td>
+                            ${order.submissionChannel}
+                        </td>
 
-                                <select
-                                    onchange="updateOrderStatus('${order.id}', this.value)"
+
+                        <td>
+
+                            <strong>
+                                ${order.files.length}
+                                file(s)
+                            </strong>
+
+
+                            <ul class="file-list">
+
+                                ${order.files.map(file => `
+
+                                    <li>
+
+                                        ${file.name}
+
+                                        (${file.sizeMB} MB)
+
+                                    </li>
+
+                                `).join("")}
+
+                            </ul>
+
+
+                            ${
+                                order.largeFiles.length > 0
+
+                                ?
+
+                                `<span class="badge yellow">
+                                    Approval Required
+                                </span>`
+
+                                :
+
+                                ""
+                            }
+
+                        </td>
+
+
+                        <td>
+
+                            ${order.pages}
+                            page(s)
+
+                            <br>
+
+                            ${order.copies}
+                            copy/copies
+
+                            <br>
+
+                            ${order.paperSize}
+
+                            <br>
+
+                            ${order.printType}
+
+                        </td>
+
+
+                        <td>
+
+                            <strong>
+
+                                ${formatMoney(
+                                    order.totalAmount
+                                )}
+
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+
+                            <select
+                                onchange="updateOrderStatus(
+                                    '${order.id}',
+                                    this.value
+                                )"
+                            >
+
+                                <option
+                                    value="Pending"
+                                    ${
+                                        order.status ===
+                                        "Pending"
+                                            ? "selected"
+                                            : ""
+                                    }
                                 >
+                                    Pending
+                                </option>
 
-                                    <option
-                                        value="Pending"
-                                        ${order.status === "Pending" ? "selected" : ""}
-                                    >
-                                        Pending
-                                    </option>
 
-                                    <option
-                                        value="Printing"
-                                        ${order.status === "Printing" ? "selected" : ""}
-                                    >
-                                        Printing
-                                    </option>
-
-                                    <option
-                                        value="Printed"
-                                        ${order.status === "Printed" ? "selected" : ""}
-                                    >
-                                        Printed
-                                    </option>
-
-                                    <option
-                                        value="Released"
-                                        ${order.status === "Released" ? "selected" : ""}
-                                    >
-                                        Released
-                                    </option>
-
-                                </select>
-
-                            </td>
-
-                            <td>
-
-                                <button
-                                    class="danger"
-                                    onclick="deleteOrder('${order.id}')"
+                                <option
+                                    value="Printing"
+                                    ${
+                                        order.status ===
+                                        "Printing"
+                                            ? "selected"
+                                            : ""
+                                    }
                                 >
-                                    Delete
-                                </button>
+                                    Printing
+                                </option>
 
-                            </td>
 
-                        </tr>
+                                <option
+                                    value="Printed"
+                                    ${
+                                        order.status ===
+                                        "Printed"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Printed
+                                </option>
 
-                    `).join("")}
 
-                </tbody>
+                                <option
+                                    value="Released"
+                                    ${
+                                        order.status ===
+                                        "Released"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Released
+                                </option>
 
-            </table>
+                            </select>
+
+                        </td>
+
+
+                        <td>
+
+                            <button
+                                class="danger"
+                                onclick="deleteOrder(
+                                    '${order.id}'
+                                )"
+                            >
+
+                                Delete
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                `).join("")}
+
+
+            </tbody>
+
+        </table>
+
+    `;
+
+}
+
+
+
+/* =====================================================
+   UPDATE ORDER STATUS
+===================================================== */
+
+function updateOrderStatus(
+    orderID,
+    newStatus
+) {
+
+    const order =
+        orders.find(
+            order =>
+                order.id === orderID
+        );
+
+
+    if (!order) {
+        return;
+    }
+
+
+    order.status = newStatus;
+
+    saveData();
+
+    renderOrders();
+
+}
+
+
+
+/* =====================================================
+   DELETE ORDER
+===================================================== */
+
+function deleteOrder(orderID) {
+
+    if (
+        !confirm(
+            "Delete order " +
+            orderID +
+            "?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    orders =
+        orders.filter(
+            order =>
+                order.id !== orderID
+        );
+
+
+    saveData();
+
+    renderOrders();
+
+    updatePaymentOrders();
+
+}
+
+
+
+/* =====================================================
+   MODULE 7
+   PAYMENT
+===================================================== */
+
+function updatePaymentOrders() {
+
+    const select =
+        document.getElementById(
+            "paymentOrder"
+        );
+
+
+    if (orders.length === 0) {
+
+        select.innerHTML = `
+            <option value="">
+                No orders available
+            </option>
         `;
-    }
 
+        document.getElementById(
+            "paymentTotal"
+        ).value = "";
 
-    function updateOrderStatus(orderID, newStatus) {
-
-        const order =
-            orders.find(order => order.id === orderID);
-
-        if (!order) {
-            return;
-        }
-
-        order.status = newStatus;
-
-        saveData();
-
-        renderOrders();
+        return;
 
     }
 
 
-    function deleteOrder(orderID) {
+    select.innerHTML =
 
-        const confirmDelete =
-            confirm(
-                "Delete order " +
-                orderID +
-                "?"
-            );
+        orders.map(order => `
 
-        if (!confirmDelete) {
-            return;
-        }
+            <option
+                value="${order.id}"
+            >
 
+                ${order.id}
+                -
+                ${order.customerName}
 
-        orders =
-            orders.filter(order => order.id !== orderID);
-
-        saveData();
-
-        renderOrders();
-        updatePaymentOrders();
-
-    }
-
-
-    /* =====================================================
-       MODULE 7
-       PAYMENT & TRANSACTION RECORDS
-    ===================================================== */
-
-    function updatePaymentOrders() {
-
-        const select =
-            document.getElementById("paymentOrder");
-
-
-        if (!select) {
-            return;
-        }
-
-
-        if (orders.length === 0) {
-
-            select.innerHTML =
-                `<option value="">No orders available</option>`;
-
-            document.getElementById("paymentTotal").value = "";
-
-            return;
-        }
-
-
-        select.innerHTML = orders.map(order => `
-
-            <option value="${order.id}">
-                ${order.id} - ${order.customerName}
             </option>
 
         `).join("");
 
 
-        updatePaymentTotal();
+    updatePaymentTotal();
 
-    }
-
-
-    document
-        .getElementById("paymentOrder")
-        .addEventListener("change", updatePaymentTotal);
-
-
-    function updatePaymentTotal() {
-
-        const orderID =
-            document.getElementById("paymentOrder").value;
-
-
-        const order =
-            orders.find(order => order.id === orderID);
-
-
-        if (!order) {
-
-            document.getElementById("paymentTotal").value = "";
-
-            return;
-        }
-
-
-        document.getElementById("paymentTotal").value =
-            order.totalAmount.toFixed(2);
-
-    }
-
-
-function getTotalPaidForOrder(orderID) {
-
-    return payments
-
-        .filter(payment => payment.orderID === orderID)
-
-        .reduce(
-            (total, payment) =>
-                total + Number(payment.amountApplied),
-            0
-        );
 }
 
 
- function recordPayment() {
+
+document
+    .getElementById("paymentOrder")
+    .addEventListener(
+        "change",
+        updatePaymentTotal
+    );
+
+
+
+/* =====================================================
+   PAYMENT TOTAL
+===================================================== */
+
+function updatePaymentTotal() {
 
     const orderID =
-        document.getElementById("paymentOrder").value;
-
-    const amountGiven =
-        Number(document.getElementById("paymentAmount").value);
-
-    const method =
-        document.getElementById("paymentMethod").value;
-
-    const type =
-        document.getElementById("paymentType").value;
+        document.getElementById(
+            "paymentOrder"
+        ).value;
 
 
     const order =
-        orders.find(order => order.id === orderID);
+        orders.find(
+            order =>
+                order.id === orderID
+        );
 
 
     if (!order) {
-        alert("Please select an order.");
+
+        document.getElementById(
+            "paymentTotal"
+        ).value = "";
+
         return;
+
+    }
+
+
+    document.getElementById(
+        "paymentTotal"
+    ).value =
+        order.totalAmount.toFixed(2);
+
+}
+
+
+
+/* =====================================================
+   TOTAL PAID FOR ORDER
+===================================================== */
+
+function getTotalPaidForOrder(
+    orderID
+) {
+
+    return payments
+
+        .filter(
+            payment =>
+                payment.orderID === orderID
+        )
+
+        .reduce(
+
+            (
+                total,
+                payment
+            ) =>
+
+                total +
+                Number(
+                    payment.amountApplied
+                ),
+
+            0
+
+        );
+
+}
+
+
+
+/* =====================================================
+   RECORD PAYMENT
+===================================================== */
+
+function recordPayment() {
+
+    const orderID =
+        document.getElementById(
+            "paymentOrder"
+        ).value;
+
+
+    const amountGiven =
+        Number(
+            document.getElementById(
+                "paymentAmount"
+            ).value
+        );
+
+
+    const method =
+        document.getElementById(
+            "paymentMethod"
+        ).value;
+
+
+    const type =
+        document.getElementById(
+            "paymentType"
+        ).value;
+
+
+    const order =
+        orders.find(
+            order =>
+                order.id === orderID
+        );
+
+
+    if (!order) {
+
+        alert(
+            "Please select an order."
+        );
+
+        return;
+
     }
 
 
     if (amountGiven <= 0) {
-        alert("Payment amount must be greater than 0.");
+
+        alert(
+            "Payment amount must be greater than 0."
+        );
+
         return;
+
     }
 
 
     const alreadyPaid =
-        getTotalPaidForOrder(orderID);
+        getTotalPaidForOrder(
+            orderID
+        );
 
 
     const remainingBalance =
-        order.totalAmount - alreadyPaid;
+        Math.max(
+            0,
+            order.totalAmount -
+            alreadyPaid
+        );
 
 
-    // Calculate the change if the customer gives more than needed.
-    const change =
-        amountGiven > remainingBalance
-            ? amountGiven - remainingBalance
-            : 0;
+    /*
+        Example:
 
+        Order = ₱100
+        Customer gives = ₱500
 
-    // Only the amount needed for the order counts as payment.
+        Amount Applied = ₱100
+        Change = ₱400
+    */
+
     const amountApplied =
-        Math.min(amountGiven, remainingBalance);
+        Math.min(
+            amountGiven,
+            remainingBalance
+        );
+
+
+    const change =
+        Math.max(
+            0,
+            amountGiven -
+            remainingBalance
+        );
 
 
     const payment = {
 
         id:
             "PAY-" +
-            String(Date.now()).slice(-6),
+            String(
+                Date.now()
+            ).slice(-6),
 
         orderID,
 
         customerName:
             order.customerName,
 
-        // How much cash/payment the customer actually handed over
         amountGiven,
 
-        // How much of that payment was actually used for the order
         amountApplied,
 
-        // Money returned to the customer
         change,
 
         method,
@@ -1251,14 +2319,21 @@ function getTotalPaidForOrder(orderID) {
 
     saveData();
 
-    document.getElementById("paymentAmount").value = "";
+
+    document.getElementById(
+        "paymentAmount"
+    ).value = "";
 
 
-    document.getElementById("paymentMessage").innerHTML = `
+    document.getElementById(
+        "paymentMessage"
+    ).innerHTML = `
 
         <div class="success">
 
-            Payment recorded successfully.
+            <strong>
+                Payment recorded successfully!
+            </strong>
 
             <br><br>
 
@@ -1269,7 +2344,7 @@ function getTotalPaidForOrder(orderID) {
 
             <br>
 
-            Amount Applied:
+            Applied to Order:
             <strong>
                 ${formatMoney(amountApplied)}
             </strong>
@@ -1287,31 +2362,57 @@ function getTotalPaidForOrder(orderID) {
 
 
     renderPayments();
+
     updatePaymentSummary();
 
+
     alert(
+
         "Payment recorded!\n\n" +
-        "Amount Given: " + formatMoney(amountGiven) + "\n" +
-        "Order Total Applied: " + formatMoney(amountApplied) + "\n" +
-        "Change: " + formatMoney(change)
+
+        "Amount Given: " +
+        formatMoney(amountGiven) +
+
+        "\n" +
+
+        "Applied: " +
+        formatMoney(amountApplied) +
+
+        "\n" +
+
+        "Change: " +
+        formatMoney(change)
+
     );
+
 }
 
+
+
+/* =====================================================
+   PAYMENT LOG
+===================================================== */
 
 function renderPayments() {
 
     const container =
-        document.getElementById("paymentsContainer");
+        document.getElementById(
+            "paymentsContainer"
+        );
 
 
     if (payments.length === 0) {
 
-        container.innerHTML =
-            `<div class="empty">
+        container.innerHTML = `
+
+            <div class="empty">
                 No transactions recorded yet.
-            </div>`;
+            </div>
+
+        `;
 
         return;
+
     }
 
 
@@ -1322,20 +2423,32 @@ function renderPayments() {
             <thead>
 
                 <tr>
+
                     <th>Payment ID</th>
+
                     <th>Order</th>
+
                     <th>Customer</th>
+
                     <th>Amount Given</th>
+
                     <th>Applied</th>
+
                     <th>Change</th>
+
                     <th>Method</th>
+
                     <th>Type</th>
+
                     <th>Date</th>
+
                 </tr>
 
             </thead>
 
+
             <tbody>
+
 
                 ${payments.map(payment => `
 
@@ -1345,43 +2458,76 @@ function renderPayments() {
                             ${payment.id}
                         </td>
 
+
                         <td>
                             ${payment.orderID}
                         </td>
+
 
                         <td>
                             ${payment.customerName}
                         </td>
 
+
                         <td>
+
                             <strong>
-                                ${formatMoney(payment.amountGiven)}
+                                ${formatMoney(
+                                    payment.amountGiven
+                                )}
                             </strong>
+
                         </td>
 
-                        <td>
-                            ${formatMoney(payment.amountApplied)}
-                        </td>
 
                         <td>
+
+                            ${formatMoney(
+                                payment.amountApplied
+                            )}
+
+                        </td>
+
+
+                        <td>
+
                             ${
                                 payment.change > 0
-                                ? `<span class="badge yellow">
-                                    ${formatMoney(payment.change)}
-                                  </span>`
-                                : formatMoney(0)
+
+                                ?
+
+                                `<span class="badge yellow">
+
+                                    ${formatMoney(
+                                        payment.change
+                                    )}
+
+                                </span>`
+
+                                :
+
+                                formatMoney(0)
+
                             }
+
                         </td>
+
 
                         <td>
                             ${payment.method}
                         </td>
 
+
                         <td>
+
                             <span class="badge blue">
+
                                 ${payment.type}
+
                             </span>
+
                         </td>
+
 
                         <td>
                             ${payment.date}
@@ -1390,6 +2536,7 @@ function renderPayments() {
                     </tr>
 
                 `).join("")}
+
 
             </tbody>
 
@@ -1400,468 +2547,681 @@ function renderPayments() {
 }
 
 
-    function updatePaymentSummary() {
 
-        const totalSales =
-            orders.reduce(
-                (sum, order) =>
-                    sum + Number(order.totalAmount),
-                0
-            );
+/* =====================================================
+   PAYMENT SUMMARY
+===================================================== */
+
+function updatePaymentSummary() {
+
+    const totalSales =
+        orders.reduce(
+
+            (
+                sum,
+                order
+            ) =>
+
+                sum +
+                Number(
+                    order.totalAmount
+                ),
+
+            0
+
+        );
 
 
-        const totalPaid =
-            payments.reduce(
-                (sum, payment) =>
-                    sum + Number(payment.amount),
-                0
-            );
+    const totalPaid =
+        payments.reduce(
+
+            (
+                sum,
+                payment
+            ) =>
+
+                sum +
+                Number(
+                    payment.amountApplied
+                ),
+
+            0
+
+        );
 
 
-        const totalBalance =
-            Math.max(0, totalSales - totalPaid);
+    const totalBalance =
+        Math.max(
+            0,
+            totalSales -
+            totalPaid
+        );
 
 
-        document.getElementById("totalSales").textContent =
-            formatMoney(totalSales);
+    document.getElementById(
+        "totalSales"
+    ).textContent =
+        formatMoney(
+            totalSales
+        );
 
-        document.getElementById("totalPaid").textContent =
-            formatMoney(totalPaid);
 
-        document.getElementById("totalBalance").textContent =
-            formatMoney(totalBalance);
+    document.getElementById(
+        "totalPaid"
+    ).textContent =
+        formatMoney(
+            totalPaid
+        );
+
+
+    document.getElementById(
+        "totalBalance"
+    ).textContent =
+        formatMoney(
+            totalBalance
+        );
+
+}
+
+
+
+/* =====================================================
+   MODULE 9
+   INVENTORY
+===================================================== */
+
+function addInventoryItem() {
+
+    const name =
+        document.getElementById(
+            "inventoryName"
+        ).value.trim();
+
+
+    const category =
+        document.getElementById(
+            "inventoryCategory"
+        ).value;
+
+
+    const unit =
+        document.getElementById(
+            "inventoryUnit"
+        ).value.trim();
+
+
+    const shopStock =
+        Number(
+            document.getElementById(
+                "shopStock"
+            ).value
+        );
+
+
+    const homeStock =
+        Number(
+            document.getElementById(
+                "homeStock"
+            ).value
+        );
+
+
+    const reorderLevel =
+        Number(
+            document.getElementById(
+                "reorderLevel"
+            ).value
+        );
+
+
+    if (!name) {
+
+        alert(
+            "Please enter an item name."
+        );
+
+        return;
 
     }
 
 
-    /* =====================================================
-       MODULE 9
-       INVENTORY MANAGEMENT
-    ===================================================== */
+    if (!unit) {
 
-    function addInventoryItem() {
+        alert(
+            "Please enter the inventory unit."
+        );
 
-        const name =
-            document.getElementById("inventoryName")
-                .value
-                .trim();
+        return;
 
-        const category =
-            document.getElementById("inventoryCategory")
-                .value;
-
-        const unit =
-            document.getElementById("inventoryUnit")
-                .value
-                .trim();
-
-        const shopStock =
-            Number(document.getElementById("shopStock").value);
-
-        const homeStock =
-            Number(document.getElementById("homeStock").value);
-
-        const reorderLevel =
-            Number(document.getElementById("reorderLevel").value);
+    }
 
 
-        if (!name) {
+    const item = {
 
-            alert("Please enter an item name.");
+        id:
+            "INV-" +
+            String(
+                Date.now()
+            ).slice(-6),
 
-            return;
-        }
+        name,
 
+        category,
 
-        if (!unit) {
+        unit,
 
-            alert("Please enter the inventory unit.");
+        shopStock,
 
-            return;
-        }
+        homeStock,
 
+        reorderLevel
 
-        if (shopStock < 0 || homeStock < 0) {
-
-            alert("Stock cannot be negative.");
-
-            return;
-        }
-
-
-        const item = {
-
-            id:
-                "INV-" +
-                String(Date.now()).slice(-6),
-
-            name,
-
-            category,
-
-            unit,
-
-            shopStock,
-
-            homeStock,
-
-            reorderLevel
-
-        };
+    };
 
 
-        inventory.push(item);
+    inventory.push(item);
 
-        saveData();
-
-
-        document.getElementById("inventoryName").value = "";
-        document.getElementById("inventoryUnit").value = "";
-        document.getElementById("shopStock").value = 0;
-        document.getElementById("homeStock").value = 0;
+    saveData();
 
 
-        document.getElementById("inventoryMessage").innerHTML = `
+    document.getElementById(
+        "inventoryName"
+    ).value = "";
 
-            <div class="success">
-                Inventory item added successfully.
+
+    document.getElementById(
+        "inventoryUnit"
+    ).value = "";
+
+
+    document.getElementById(
+        "shopStock"
+    ).value = 0;
+
+
+    document.getElementById(
+        "homeStock"
+    ).value = 0;
+
+
+    document.getElementById(
+        "inventoryMessage"
+    ).innerHTML = `
+
+        <div class="success">
+
+            Inventory item added successfully.
+
+        </div>
+
+    `;
+
+
+    renderInventory();
+
+}
+
+
+
+/* =====================================================
+   INVENTORY DISPLAY
+===================================================== */
+
+function renderInventory() {
+
+    const container =
+        document.getElementById(
+            "inventoryContainer"
+        );
+
+
+    if (inventory.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                No inventory items yet.
+
             </div>
 
         `;
 
-
-        renderInventory();
+        return;
 
     }
 
 
-    function renderInventory() {
+    container.innerHTML = `
 
-        const container =
-            document.getElementById("inventoryContainer");
+        <table>
 
+            <thead>
 
-        if (inventory.length === 0) {
+                <tr>
 
-            container.innerHTML = `
+                    <th>Item</th>
 
-                <div class="empty">
+                    <th>Category</th>
 
-                    No inventory items yet.
+                    <th>Shop</th>
 
-                    <br><br>
+                    <th>Home</th>
 
-                    Try adding Bond Paper, Ink/Toner,
-                    Photo Paper, etc.
+                    <th>Total</th>
 
-                </div>
+                    <th>Reorder Level</th>
 
-            `;
+                    <th>Status</th>
 
-            return;
-        }
+                    <th>Adjust</th>
 
+                    <th>Delete</th>
 
-        container.innerHTML = `
+                </tr>
 
-            <table>
-
-                <thead>
-
-                    <tr>
-                        <th>Item</th>
-                        <th>Category</th>
-                        <th>Shop</th>
-                        <th>Home</th>
-                        <th>Total</th>
-                        <th>Reorder Level</th>
-                        <th>Status</th>
-                        <th>Adjust</th>
-                        <th>Delete</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    ${inventory.map(item => {
-
-                        const total =
-                            Number(item.shopStock) +
-                            Number(item.homeStock);
+            </thead>
 
 
-                        /*
-                            Low stock is based on the interview:
-                            one box at shop AND one box at home.
-
-                            The values are configurable.
-                        */
-
-                        const isLowStock =
-                            item.shopStock <= item.reorderLevel &&
-                            item.homeStock <= item.reorderLevel;
+            <tbody>
 
 
-                        return `
+                ${inventory.map(item => {
 
-                            <tr>
+                    const total =
+                        Number(
+                            item.shopStock
+                        ) +
+                        Number(
+                            item.homeStock
+                        );
 
-                                <td>
-                                    <strong>
-                                        ${item.name}
-                                    </strong>
-                                </td>
 
-                                <td>
-                                    ${item.category}
-                                </td>
+                    const lowStock =
+                        item.shopStock <=
+                            item.reorderLevel &&
 
-                                <td>
-                                    ${item.shopStock}
+                        item.homeStock <=
+                            item.reorderLevel;
+
+
+                    return `
+
+                        <tr>
+
+
+                            <td>
+
+                                <strong>
+                                    ${item.name}
+                                </strong>
+
+                            </td>
+
+
+                            <td>
+                                ${item.category}
+                            </td>
+
+
+                            <td>
+
+                                ${item.shopStock}
+                                ${item.unit}
+
+                            </td>
+
+
+                            <td>
+
+                                ${item.homeStock}
+                                ${item.unit}
+
+                            </td>
+
+
+                            <td>
+
+                                <strong>
+
+                                    ${total}
                                     ${item.unit}
-                                </td>
 
-                                <td>
-                                    ${item.homeStock}
-                                    ${item.unit}
-                                </td>
+                                </strong>
 
-                                <td>
-                                    <strong>
-                                        ${total}
-                                        ${item.unit}
-                                    </strong>
-                                </td>
+                            </td>
 
-                                <td>
-                                    ${item.reorderLevel}
-                                </td>
 
-                                <td>
+                            <td>
 
-                                    ${
-                                        isLowStock
-                                        ?
-                                        `<span class="badge red">
-                                            LOW STOCK
-                                        </span>`
-                                        :
-                                        `<span class="badge green">
-                                            OK
-                                        </span>`
-                                    }
+                                ${item.reorderLevel}
 
-                                </td>
+                            </td>
 
-                                <td>
 
-                                    <button
-                                        class="small"
-                                        onclick="adjustStock('${item.id}', 'shop', 1)"
-                                    >
-                                        + Shop
-                                    </button>
+                            <td>
 
-                                    <button
-                                        class="small"
-                                        onclick="adjustStock('${item.id}', 'shop', -1)"
-                                    >
-                                        - Shop
-                                    </button>
+                                ${
+                                    lowStock
 
-                                    <br><br>
+                                    ?
 
-                                    <button
-                                        class="small"
-                                        onclick="adjustStock('${item.id}', 'home', 1)"
-                                    >
-                                        + Home
-                                    </button>
+                                    `<span class="badge red">
+                                        LOW STOCK
+                                    </span>`
 
-                                    <button
-                                        class="small"
-                                        onclick="adjustStock('${item.id}', 'home', -1)"
-                                    >
-                                        - Home
-                                    </button>
+                                    :
 
-                                </td>
+                                    `<span class="badge green">
+                                        OK
+                                    </span>`
+                                }
 
-                                <td>
+                            </td>
 
-                                    <button
-                                        class="danger"
-                                        onclick="deleteInventory('${item.id}')"
-                                    >
-                                        Delete
-                                    </button>
 
-                                </td>
+                            <td>
 
-                            </tr>
 
-                        `;
+                                <button
+                                    class="small"
+                                    onclick="
+                                        adjustStock(
+                                            '${item.id}',
+                                            'shop',
+                                            1
+                                        )
+                                    "
+                                >
+                                    + Shop
+                                </button>
 
-                    }).join("")}
 
-                </tbody>
+                                <button
+                                    class="small"
+                                    onclick="
+                                        adjustStock(
+                                            '${item.id}',
+                                            'shop',
+                                            -1
+                                        )
+                                    "
+                                >
+                                    - Shop
+                                </button>
 
-            </table>
 
-        `;
+                                <br>
 
+
+                                <button
+                                    class="small"
+                                    onclick="
+                                        adjustStock(
+                                            '${item.id}',
+                                            'home',
+                                            1
+                                        )
+                                    "
+                                >
+                                    + Home
+                                </button>
+
+
+                                <button
+                                    class="small"
+                                    onclick="
+                                        adjustStock(
+                                            '${item.id}',
+                                            'home',
+                                            -1
+                                        )
+                                    "
+                                >
+                                    - Home
+                                </button>
+
+
+                            </td>
+
+
+                            <td>
+
+                                <button
+                                    class="danger"
+                                    onclick="
+                                        deleteInventory(
+                                            '${item.id}'
+                                        )
+                                    "
+                                >
+
+                                    Delete
+
+                                </button>
+
+                            </td>
+
+
+                        </tr>
+
+                    `;
+
+                }).join("")}
+
+
+            </tbody>
+
+        </table>
+
+    `;
+
+}
+
+
+
+/* =====================================================
+   ADJUST STOCK
+===================================================== */
+
+function adjustStock(
+    itemID,
+    location,
+    amount
+) {
+
+    const item =
+        inventory.find(
+            item =>
+                item.id === itemID
+        );
+
+
+    if (!item) {
+        return;
     }
 
 
-    function adjustStock(itemID, location, amount) {
+    if (location === "shop") {
 
-        const item =
-            inventory.find(
-                item => item.id === itemID
+        item.shopStock =
+            Math.max(
+                0,
+                item.shopStock +
+                amount
             );
 
-
-        if (!item) {
-            return;
-        }
-
-
-        if (location === "shop") {
-
-            item.shopStock =
-                Math.max(
-                    0,
-                    item.shopStock + amount
-                );
-
-        }
-
-
-        if (location === "home") {
-
-            item.homeStock =
-                Math.max(
-                    0,
-                    item.homeStock + amount
-                );
-
-        }
-
-
-        saveData();
-
-        renderInventory();
-
     }
 
 
-    function deleteInventory(itemID) {
+    if (location === "home") {
 
-        const confirmed =
-            confirm(
-                "Delete this inventory item?"
+        item.homeStock =
+            Math.max(
+                0,
+                item.homeStock +
+                amount
             );
 
+    }
 
-        if (!confirmed) {
-            return;
+
+    saveData();
+
+    renderInventory();
+
+}
+
+
+
+/* =====================================================
+   DELETE INVENTORY
+===================================================== */
+
+function deleteInventory(itemID) {
+
+    if (
+        !confirm(
+            "Delete this inventory item?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    inventory =
+        inventory.filter(
+            item =>
+                item.id !== itemID
+        );
+
+
+    saveData();
+
+    renderInventory();
+
+}
+
+
+
+/* =====================================================
+   STARTER INVENTORY
+===================================================== */
+
+function addStarterInventory() {
+
+    if (
+        inventory.length > 0
+    ) {
+
+        return;
+
+    }
+
+
+    inventory = [
+
+        {
+
+            id: "INV-001",
+
+            name: "Bond Paper",
+
+            category: "Bond Paper",
+
+            unit: "box",
+
+            shopStock: 2,
+
+            homeStock: 2,
+
+            reorderLevel: 1
+
+        },
+
+
+        {
+
+            id: "INV-002",
+
+            name: "Photo Paper",
+
+            category: "Photo Paper",
+
+            unit: "pack",
+
+            shopStock: 3,
+
+            homeStock: 1,
+
+            reorderLevel: 1
+
+        },
+
+
+        {
+
+            id: "INV-003",
+
+            name: "Black Ink",
+
+            category: "Ink/Toner",
+
+            unit: "bottle",
+
+            shopStock: 2,
+
+            homeStock: 1,
+
+            reorderLevel: 1
+
         }
 
-
-        inventory =
-            inventory.filter(
-                item => item.id !== itemID
-            );
+    ];
 
 
-        saveData();
+    saveData();
 
-        renderInventory();
-
-    }
+}
 
 
-    /* =====================================================
-       STARTER INVENTORY
-       Only adds examples if there is no saved inventory yet.
-    ===================================================== */
 
-    function addStarterInventory() {
+/* =====================================================
+   REFRESH EVERYTHING
+===================================================== */
 
-        if (inventory.length > 0) {
-            return;
-        }
+function refreshEverything() {
 
+    renderOrders();
 
-        inventory = [
+    updatePaymentOrders();
 
-            {
-                id: "INV-001",
-                name: "Bond Paper",
-                category: "Bond Paper",
-                unit: "box",
-                shopStock: 2,
-                homeStock: 2,
-                reorderLevel: 1
-            },
+    renderPayments();
 
-            {
-                id: "INV-002",
-                name: "Photo Paper",
-                category: "Photo Paper",
-                unit: "pack",
-                shopStock: 3,
-                homeStock: 1,
-                reorderLevel: 1
-            },
+    updatePaymentSummary();
 
-            {
-                id: "INV-003",
-                name: "Black Ink",
-                category: "Ink/Toner",
-                unit: "bottle",
-                shopStock: 2,
-                homeStock: 1,
-                reorderLevel: 1
-            }
+    renderInventory();
 
-        ];
+    updatePricePreview();
+
+}
 
 
-        saveData();
 
-    }
+/* =====================================================
+   INITIALIZE
+===================================================== */
 
+addStarterInventory();
 
-    /* =====================================================
-       REFRESH
-    ===================================================== */
+refreshEverything();
 
-    function refreshEverything() {
-
-        renderOrders();
-
-        updatePaymentOrders();
-
-        renderPayments();
-
-        updatePaymentSummary();
-
-        renderInventory();
-
-    }
-
-
-    /*
-        Run when the page opens.
-    */
-
-    addStarterInventory();
-
-    refreshEverything();
 
 </script>
 
+
 </body>
+
 </html>
